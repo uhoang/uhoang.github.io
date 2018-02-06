@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Coding on Uyen Hoang</title>
+    <link>http://uhoang.github.io/tags/coding/</link>
+    <description>Recent content in Coding on Uyen Hoang</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 09 Feb 2017 15:06:09 -0500</lastBuildDate>
+    
+	<atom:link href="http://uhoang.github.io/tags/coding/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Modules in Python</title>
+      <link>http://uhoang.github.io/blog/py_module/</link>
+      <pubDate>Thu, 09 Feb 2017 15:06:09 -0500</pubDate>
+      
+      <guid>http://uhoang.github.io/blog/py_module/</guid>
+      <description>I recently started reading, A byte of python, and found it a very helpful guide to the language for a beginner. The book was well-written, and explained most of important concepts in simple terms with self evident examples to follow. Thus, it made learning Python simple and interesting.
+As a R programmer, I found that those sections such as modules, data structures and OOP are important to understand the basic building blocks of Python and how to make connection with the language that I’m more familiar with.</description>
+    </item>
+    
+    <item>
+      <title>Create a Hugo site with Github</title>
+      <link>http://uhoang.github.io/blog/create-a-hugo-site-with-github/</link>
+      <pubDate>Sun, 15 Jan 2017 23:28:25 -0500</pubDate>
+      
+      <guid>http://uhoang.github.io/blog/create-a-hugo-site-with-github/</guid>
+      <description>Step 1: Install Hugo For Linux users, you can install hugo through snap or apt-get command in the terminal. See install for further details or if you are running other OS.
+snap install hugo or
+sudo apt-get install hugo Step 2: Create a new site In your terminal, run the following command, where site_name will be your site directory. This means that all the markdown and templates and configuration will be store in that directory.</description>
+    </item>
+    
+  </channel>
+</rss>

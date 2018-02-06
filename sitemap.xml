@@ -53,8 +53,20 @@
   </url>
   
   <url>
-    <loc>http://uhoang.github.io/categories/coding/</loc>
+    <loc>http://uhoang.github.io/tags/coding/</loc>
     <lastmod>2017-02-09T15:06:09-05:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://uhoang.github.io/tags/machine-learning/</loc>
+    <lastmod>2017-02-25T15:16:17-05:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://uhoang.github.io/tags/markdown/</loc>
+    <lastmod>2017-01-15T23:28:25-05:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -66,6 +78,7 @@
   
   <url>
     <loc>http://uhoang.github.io/tags/</loc>
+    <lastmod>2017-02-09T15:06:09-05:00</lastmod>
     <priority>0</priority>
   </url>
   

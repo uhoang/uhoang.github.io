@@ -6,9 +6,37 @@
     <description>Recent content in Tags on Uyen Hoang</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <lastBuildDate>Thu, 09 Feb 2017 15:06:09 -0500</lastBuildDate>
     
 	<atom:link href="http://uhoang.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Coding</title>
+      <link>http://uhoang.github.io/tags/coding/</link>
+      <pubDate>Thu, 09 Feb 2017 15:06:09 -0500</pubDate>
+      
+      <guid>http://uhoang.github.io/tags/coding/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Machine learning</title>
+      <link>http://uhoang.github.io/tags/machine-learning/</link>
+      <pubDate>Sat, 25 Feb 2017 15:16:17 -0500</pubDate>
+      
+      <guid>http://uhoang.github.io/tags/machine-learning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Markdown</title>
+      <link>http://uhoang.github.io/tags/markdown/</link>
+      <pubDate>Sun, 15 Jan 2017 23:28:25 -0500</pubDate>
+      
+      <guid>http://uhoang.github.io/tags/markdown/</guid>
+      <description></description>
+    </item>
     
   </channel>
 </rss>

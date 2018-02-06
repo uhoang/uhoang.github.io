@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Markdown on Uyen Hoang</title>
+    <link>http://uhoang.github.io/tags/markdown/</link>
+    <description>Recent content in Markdown on Uyen Hoang</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 15 Jan 2017 23:28:25 -0500</lastBuildDate>
+    
+	<atom:link href="http://uhoang.github.io/tags/markdown/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Create a Hugo site with Github</title>
+      <link>http://uhoang.github.io/blog/create-a-hugo-site-with-github/</link>
+      <pubDate>Sun, 15 Jan 2017 23:28:25 -0500</pubDate>
+      
+      <guid>http://uhoang.github.io/blog/create-a-hugo-site-with-github/</guid>
+      <description>Step 1: Install Hugo For Linux users, you can install hugo through snap or apt-get command in the terminal. See install for further details or if you are running other OS.
+snap install hugo or
+sudo apt-get install hugo Step 2: Create a new site In your terminal, run the following command, where site_name will be your site directory. This means that all the markdown and templates and configuration will be store in that directory.</description>
+    </item>
+    
+  </channel>
+</rss>
