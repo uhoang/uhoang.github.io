@@ -4,24 +4,22 @@
 <head>
   <meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'>
-<meta name='description' content='Factorization machines (FM) are a generic model class that can mimic most factorization models just by feature engineering.
-FMs combine feature engineering with factorization models(matrix factorization or tensor factorization) in estimating interactions between categorical variables.
-Factorization Machines Math $$ \hat y := w_0 &#43; \sum_{i= 1}^n w_i x_i &#43; \sum_{i = 1}^n \sum_{j = i&#43;1}^n \hat w_{i,j} x_i x_j $$
-where $\hat w_{i,j}$ are the factorized interaction parameters between pairs'>
+<meta name='description' content='Step 1: Install Hugo For Linux users, you can install hugo through snap or apt-get command in the terminal. See install for further details or if you are running other OS.
+snap install hugo or
+sudo apt-get install hugo Step 2: Create a new site In your terminal, run the following command, where site_name will be your site directory. This means that all the markdown and templates and configuration will be store in that directory.'>
 
-<meta property='og:title' content='Note on Factorization machines • Uyen Hoang'>
-<meta property='og:description' content='Factorization machines (FM) are a generic model class that can mimic most factorization models just by feature engineering.
-FMs combine feature engineering with factorization models(matrix factorization or tensor factorization) in estimating interactions between categorical variables.
-Factorization Machines Math $$ \hat y := w_0 &#43; \sum_{i= 1}^n w_i x_i &#43; \sum_{i = 1}^n \sum_{j = i&#43;1}^n \hat w_{i,j} x_i x_j $$
-where $\hat w_{i,j}$ are the factorized interaction parameters between pairs'>
-<meta property='og:url' content='http://uhoang.github.io/blog/fm/'>
+<meta property='og:title' content='Create a Hugo site with Github • Uyen Hoang'>
+<meta property='og:description' content='Step 1: Install Hugo For Linux users, you can install hugo through snap or apt-get command in the terminal. See install for further details or if you are running other OS.
+snap install hugo or
+sudo apt-get install hugo Step 2: Create a new site In your terminal, run the following command, where site_name will be your site directory. This means that all the markdown and templates and configuration will be store in that directory.'>
+<meta property='og:url' content='http://uhoang.github.io/blog/create-a-hugo-site-with-github/'>
 <meta property='og:site_name' content='Uyen Hoang'>
-<meta property='og:type' content='article'><meta property='article:section' content='Blog'><meta property='article:published_time' content='2017-01-24T15:28:54-05:00'/><meta property='article:modified_time' content='2017-01-24T15:28:54-05:00'/><meta name='twitter:card' content='summary'>
+<meta property='og:type' content='article'><meta property='article:section' content='Blog'><meta name='twitter:card' content='summary'>
 
 <meta name="generator" content="Hugo 0.36" />
 
-  <title>Note on Factorization machines • Uyen Hoang</title>
-  <link rel='canonical' href='http://uhoang.github.io/blog/fm/'>
+  <title>Create a Hugo site with Github • Uyen Hoang</title>
+  <link rel='canonical' href='http://uhoang.github.io/blog/create-a-hugo-site-with-github/'>
   
   
   <link rel='icon' href='/favicon.ico'>
@@ -102,7 +100,7 @@ where $\hat w_{i,j}$ are the factorized interaction parameters between pairs'>
     <header class='header-container'>
   <div class='header entry-header'>
     <div class='header-info'>
-      <h1 class='title'>Note on Factorization machines</h1>
+      <h1 class='title'>Create a Hugo site with Github</h1>
       
 
     </div>
@@ -117,7 +115,7 @@ where $\hat w_{i,j}$ are the factorized interaction parameters between pairs'>
   
 </svg>
 <span class='screen-reader'>Posted on </span>
-  <time class='date' datetime='2017-01-24T15:28:54-05:00'>2017, Jan 24</time>
+  <time class='date' datetime='0001-01-01T00:00:00Z'>0001, Jan 01</time>
 </span>
 
   
@@ -128,7 +126,7 @@ where $\hat w_{i,j}$ are the factorized interaction parameters between pairs'>
   <polyline points="12 6 12 12 15 15"/>
   
 </svg>
-2 mins read
+3 mins read
 </span>
 
 
@@ -144,39 +142,142 @@ where $\hat w_{i,j}$ are the factorized interaction parameters between pairs'>
     <div class='entry-content'>
   
 
-<p>Factorization machines (FM) are a generic model class that can mimic most factorization models just by feature engineering.</p>
+<h1 id="step-1-install-hugo">Step 1: Install Hugo</h1>
 
-<p>FMs combine feature engineering with factorization models(matrix factorization or tensor factorization) in estimating interactions between categorical variables.</p>
+<p>For Linux users, you can install hugo through snap or apt-get command in the terminal. See <a href="https://gohugo.io/getting-started/installing" target="_blank">install</a> for further details or if you are running other OS.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">snap install hugo</code></pre></div>
+<p>or</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo apt-get install hugo</code></pre></div>
+<h1 id="step-2-create-a-new-site">Step 2: Create a new site</h1>
 
-<!-- Factorization machines (FMs) uses linear regression and matrix factorization to model sparse feature interactions but in linear time.
- -->
+<p>In your terminal, run the following command, where site_name will be your site directory. This means that all the markdown and templates and configuration will be store in that directory. For simplicity, let&rsquo;s call this directory <code>blog</code>.</p>
 
-<h2 id="factorization-machines-math">Factorization Machines Math</h2>
+<pre><code>hugo new site blog
+</code></pre>
 
-<p>$$ \hat y := w_0 + \sum_{i= 1}^n w_i x_i + \sum_{i = 1}^n \sum_{j = i+1}^n \hat w_{i,j} x_i x_j $$</p>
+<h1 id="step-3-add-a-theme">Step 3: Add a theme</h1>
 
-<p>where $\hat w_{i,j}$ are the factorized interaction parameters between pairs</p>
+<p>See <a href="https://themes.gohugo.io/" target="_blank">themes.gohugo.io</a> for a list of themes to consider. In this example, I use Minimo theme developed by Munif Tanjim.</p>
 
-<p>$$ w_{i, j} = \langle \mathbf{v_i}, \mathbf{v_j}\rangle = \sum_{f = 1}^k v_{i,f} \cdot v_{j,f} $$</p>
+<pre><code>cd blog
+git init
+git submodule add https://github.com/MunifTanjim/minimo themes/minimo
+</code></pre>
 
-<p>and the model parameters $\Theta$ that have to be estimated are:
-$$w_{0}, \mathbf{w} \in \mathbb{R}^n, \mathbf{V} \in \mathbb{R}^{n \times k}$$</p>
+<p>This will add Minimo&rsquo;s repository as a submodule to the <code>blog</code> repository. Now, we will have to pull the theme:</p>
 
-<p>Intepretation: $w_0$ is the global bias, $w_i$ models the interaction of the i-th variable to the target and $\hat w_{i, j}$ models the factorized interaction of a pair of variables with the target.</p>
+<pre><code>git submodule init
+git submodule update
+</code></pre>
 
-<p>When we consider quadractic feature interactions, the complexity increases to $O(n^2)$ in the above formula. Now consider a very sparse set of features, the runtime blows up. In most cases, we instead model a very limited set of feature interactions to manage the complexity.</p>
+<p>Minimo is ready to be used. For getting started with Minimo, copy the config.toml file from exampleSite directory inside Minimo&rsquo;s repository to the <code>blog</code> repository.</p>
 
-<h2 id="how-do-fms-solve-the-problem">How do FMs solve the problem?</h2>
+<pre><code>cp themes/minimo/exampleSite/config.toml .
+</code></pre>
 
-<p>In the recommendataion problem space, the sparsity problem has been dealt with a well-documented technique called (non-negative) matrix factorization</p>
+<p>Now, we can start editing this file and change configuration! For more setup guides on the theme, go to <a href="https://minimo.netlify.com/" target="_blank">minimo</a></p>
 
-<p><img src="/images/factorization.png" alt="Example image" /></p>
+<p>Step 4: Add some content</p>
 
-<p>We factorize sparse user item matrix $( r )$ $\in \mathbb{R}^{U \times I}$ into a user matrix $(u)$ $\in \mathbb{R}^{U  \times K}$ and an item matrix $(i)$ $\in \mathbb{R}^{I \times K}$, where $K &lt;&lt; U$ and $K &lt;&lt; I$.</p>
+<pre><code>mkdir content/blog
+hugo new blog/my-first-post.md
+</code></pre>
 
-<p>User $(u_i)$&rsquo;s preference for item $i_j$ can be approximated by $u_i \cdot i_j$.</p>
+<p>We can open the file <code>my-first-post.md</code> in <code>content</code> directory to input some content. Now, we can start the Hugo server wit drafts enabled:</p>
 
-<p>Factorization Machines takes inspiration from matrix factorization, and models the feature iteractions like using latent vectors of size $K$. As a result, every sparse feature $f_i$ has a corresponding latent vector $v_i$. And two feature&rsquo;s interactions are modelled as $v_i \cdot v_j$.</p>
+<pre><code>hugo server -D
+
+Started building sites ...
+Built site for language en:
+1 of 1 draft rendered
+0 future content
+0 expired content
+1 regular pages created
+8 other pages created
+0 non-page files copied
+1 paginator pages created
+0 categories created
+0 tags created
+total in 18 ms
+Watching for changes in /Users/username/projects/blog/{data,content,layouts,static,themes}
+Serving pages from memory
+Web Server is available at http://localhost:1313/ (bind address 127.0.0.1)
+Press Ctrl+C to stop
+
+</code></pre>
+
+<p>Open with any web browsers at <a href="http:localhost:1313//" target="_blank">http:localhost:1313//</a></p>
+
+<h1 id="step-6-deploy-on-github">Step 6: Deploy on github</h1>
+
+<p>There are 2 types of Github Pages:
+* User/Organization Pages
+* Project Pages</p>
+
+<p>In this example, I only focus on creating a User/Organiztion Pages site.</p>
+
+<h3 id="set-up-repositories-on-github">Set up repositories on Github</h3>
+
+<p>First, create two new repositories on Github: <br/>
+1. <code>blog</code> <br/>
+2. <code>&lt;username&gt;.github.io</code> Make sure to check the <em>Initialize this repository with a README</em> box, since that will make the next step easier</p>
+
+<p>Delete the <code>public/</code> directory from git if it exists:</p>
+
+<pre><code>git rm -r public
+</code></pre>
+
+<h3 id="add-the-submodule">Add the submodule</h3>
+
+<p>Clone the <code>&lt;username&gt;.github.io</code> repo into a submodule in <code>public</code>:</p>
+
+<pre><code>git submodule add git@github.com:&lt;username&gt;/&lt;username&gt;.github.io.git public
+</code></pre>
+
+<p>Add everything and push it up to Github:</p>
+
+<pre><code># Build the project
+hugo # if using a theme, replace with `hugo -t &lt;YOURTHEME&gt;`
+# Go to the public folder
+cd public
+
+# Add changes to git.
+git add .
+git commit -m 'Generate the site'
+git push -u origin master
+</code></pre>
+
+<h3 id="automate-deploying">Automate deploying</h3>
+
+<p>We can add a <code>deploy.sh</code> script to automate the preceding steps and make it executable with <code>chmod +x deploy.sh</code></p>
+
+<pre><code>#!/bin/bash
+
+echo -e &quot;\033[0;32mDeploying updates to GitHub...\033[0m&quot;
+
+# Build the project.
+hugo # if using a theme, replace with `hugo -t &lt;YOURTHEME&gt;`
+
+# Go To Public folder
+cd public
+# Add changes to git.
+git add .
+
+# Commit changes.
+msg=&quot;rebuilding site `date`&quot;
+if [ $# -eq 1 ]
+  then msg=&quot;$1&quot;
+fi
+git commit -m &quot;$msg&quot;
+
+# Push source and build repos.
+git push origin master
+
+# Come Back up to the Project Root
+cd ..
+</code></pre>
+
+<p>To deploy, run <code>./deploy.shs &quot;Your optional commit message&quot;</code> to send changes to <code>&lt;username&gt;.github.io</code>. Note that we still need to commit changes to our <code>blog</code> repository.</p>
 
 </div>
 
@@ -191,19 +292,9 @@ $$w_{0}, \mathbf{w} \in \mathbb{R}^n, \mathbf{V} \in \mathbb{R}^{n \times k}$$</
   </article>
   
 <nav class='entry-nav-container'>
-  <div class='entry-nav'><div class='prev-entry'>
-      <a href='/blog/create-a-hugo-site-with-github/'>
-        <span aria-hidden='true'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
-  
-  <line x1="20" y1="12" x2="4" y2="12"/>
-  <polyline points="10 18 4 12 10 6"/>
-  
-</svg>
- Previous</span>
-        <span class='screen-reader'>Previous post: </span>Create a Hugo site with Github</a>
-    </div><div class='next-entry'>
-      <a href='/blog/py_module/'>
-        <span class='screen-reader'>Next post: </span>Modules in python<span aria-hidden='true'>Next <svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  <div class='entry-nav'><div class='next-entry'>
+      <a href='/blog/fm/'>
+        <span class='screen-reader'>Next post: </span>Note on Factorization machines<span aria-hidden='true'>Next <svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
   
   <line x1="4" y1="12" x2="20" y2="12"/>
   <polyline points="14 6 20 12 14 18"/>

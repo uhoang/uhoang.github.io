@@ -63,5 +63,16 @@ Factorization Machines Math $$ \hat y := w_0 + \sum_{i= 1}^n w_i x_i + \sum_{i =
 where $\hat w_{i,j}$ are the factorized interaction parameters between pairs</description>
     </item>
     
+    <item>
+      <title>Create a Hugo site with Github</title>
+      <link>http://uhoang.github.io/blog/create-a-hugo-site-with-github/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://uhoang.github.io/blog/create-a-hugo-site-with-github/</guid>
+      <description>Step 1: Install Hugo For Linux users, you can install hugo through snap or apt-get command in the terminal. See install for further details or if you are running other OS.
+snap install hugo or
+sudo apt-get install hugo Step 2: Create a new site In your terminal, run the following command, where site_name will be your site directory. This means that all the markdown and templates and configuration will be store in that directory.</description>
+    </item>
+    
   </channel>
 </rss>
