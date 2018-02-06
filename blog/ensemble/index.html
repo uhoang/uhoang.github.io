@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+  <meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<meta name='description' content='Bagging &amp; Boosting Bagging and boosting are two ensenble methods that a set of weak learner are combined to create a strong learner, which has a better performance than a single learner.
+In learning, the main cause of error are due to noise, bias and variance. The goal of these ensemble methods is to reduce the error from bias and variance. Thus, it produces a more reliable classifier / regressor.'>
+
+<meta property='og:title' content='Ensemble • Uyen Hoang'>
+<meta property='og:description' content='Bagging &amp; Boosting Bagging and boosting are two ensenble methods that a set of weak learner are combined to create a strong learner, which has a better performance than a single learner.
+In learning, the main cause of error are due to noise, bias and variance. The goal of these ensemble methods is to reduce the error from bias and variance. Thus, it produces a more reliable classifier / regressor.'>
+<meta property='og:url' content='http://uhoang.github.io/blog/ensemble/'>
+<meta property='og:site_name' content='Uyen Hoang'>
+<meta property='og:type' content='article'><meta property='article:section' content='Blog'><meta property='article:published_time' content='2017-02-25T15:16:17-05:00'/><meta property='article:modified_time' content='2017-02-25T15:16:17-05:00'/><meta name='twitter:card' content='summary'>
+
+<meta name="generator" content="Hugo 0.36" />
+
+  <title>Ensemble • Uyen Hoang</title>
+  <link rel='canonical' href='http://uhoang.github.io/blog/ensemble/'>
+  
+  
+  <link rel='icon' href='/favicon.ico'>
+<link rel='stylesheet' href='/assets/css/main.f0e8df71.css'><link rel='stylesheet' href='/css/custom.css'>
+</head>
+
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+  });
+  MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+
+  MathJax.Hub.Config({
+  
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+  });
+</script>
+<body class='page type-blog'>
+  <div class='site'>
+
+    <a class='screen-reader' href='#main'>Skip to Content</a>
+
+    <header id='header' class='header-container'>
+      <div class='header site-header'>
+        <nav id='main-menu' class='main-menu-container' aria-label='Main Menu'>
+  <ul class='main-menu'>
+  <li>
+      <a href='/'>Home</a>
+    </li>
+  <li>
+      <a href='/blog/'>blog</a>
+    </li>
+  <li>
+      <a href='/about/'>About</a>
+    </li>
+  <li>
+      <a href='https://github.com/uhoang'>Repo</a>
+    </li>
+  
+  </ul>
+</nav>
+
+        <div class='header-info'>
+          
+          <p class='site-title title'>Uyen Hoang</p>
+          
+          <p class='site-description subtitle'></p>
+        </div>
+      </div>
+    </header>
+
+
+<main id='main' class='main'>
+  <article lang='en' class='entry'>
+    <header class='header-container'>
+  <div class='header entry-header'>
+    <div class='header-info'>
+      <h1 class='title'>Ensemble</h1>
+      
+
+    </div>
+    
+<div class='meta'>
+  <span class='posted-on'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+  <line x1="16" y1="2" x2="16" y2="6"/>
+  <line x1="8" y1="2" x2="8" y2="6"/>
+  <line x1="3" y1="10" x2="21" y2="10"/>
+  
+</svg>
+<span class='screen-reader'>Posted on </span>
+  <time class='date' datetime='2017-02-25T15:16:17-05:00'>2017, Feb 25</time>
+</span>
+
+  
+  
+<span class='reading-time'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <circle cx="12" cy="12" r="10"/>
+  <polyline points="12 6 12 12 15 15"/>
+  
+</svg>
+2 mins read
+</span>
+
+
+</div>
+
+
+  </div>
+</header>
+
+    
+    
+
+    <div class='entry-content'>
+  
+
+<h1 id="bagging-boosting">Bagging &amp; Boosting</h1>
+
+<p>Bagging and boosting are two ensenble methods that a set of weak learner are combined to create a strong learner, which has a better performance than a single learner.</p>
+
+<p>In learning, the main cause of error are due to noise, bias and variance. The goal of these ensemble methods is to reduce the error from bias and variance. Thus, it produces a more reliable classifier / regressor.</p>
+
+<h3 id="how-they-work-and-differ">How they work and differ</h3>
+
+<p>Both bagging and boosting get N learners by training on new training dataset produced by sampling with replacement from the original dataset.</p>
+
+<ol>
+<li>At sampling stage
+
+<ul>
+<li>Bagging uses equal weights to sample a new dataset</li>
+<li>Boosting applies an unequal weights for each observation</li>
+</ul></li>
+<li>At training stage
+
+<ul>
+<li>Bagging builds each model independently</li>
+<li>Boosting builds each learner in sequential way. Weights are redistributed after each training step. That is, putting more weights on difficult cases.</li>
+</ul></li>
+<li>At classification / prediction stage
+
+<ul>
+<li>Bagging averages over the response of N learners</li>
+<li>Boosting takes the weighted average of the estimates, which are assigned with different weights</li>
+</ul></li>
+</ol>
+
+<h3 id="how-to-select-the-best-suited-method">How to select the best suited method</h3>
+
+<p>This decision depends on your problem at hand. First, I will list out the main features of each method.</p>
+
+<ol>
+<li><p>Bagging:</p>
+
+<ul>
+<li>reduce variance</li>
+<li>handle overfitting</li>
+<li>independent classifers</li>
+</ul></li>
+
+<li><p>Boosting:</p>
+
+<ul>
+<li>reduce variance and bias</li>
+<li>can overfit</li>
+<li>sequential classifiers<br /></li>
+</ul></li>
+</ol>
+
+<p>Both methods try to decrease a variance of a single estimate to create a higher stability model. However, bagging suffers a low performance if a single model is underfitted. Because bagging rarely get a better bias.</p>
+
+<p>When the problem is overfitting a single model, boosting will perform worse by increasing the model complexity.</p>
+
+<h3 id="gradient-boosting-method">Gradient Boosting Method</h3>
+
+<p>Setup: Denote $\{(x_i, y_i)\}_{i=1}^n$ as a training set, a differentiable loss function $L(y, F(x))$ and a number of iteration $M$</p>
+
+<ol>
+<li>Initialize model with a constant value: $F_0(x) = argmin_\gamma \sum_i^n L(y_i; \gamma)$</li>
+
+<li><p>For $m = 1$ to $M$</p>
+
+<ol>
+<li>Compute pseudo residuals:
+$$r_{im} = -\left[\frac{\partial L(y_i; F(x_i))}{\partial F(x_i)}\right]$$</li>
+<li>Fit a base learner (tree) $h_m(x)$ to pseudo residuals, ${(r_{im}, x_i)}_i^n$</li>
+<li>Compute multiplier $\gamma_m$ by solving the one-dim optimization problem
+$$\gamma_m = argmin_\gamma \sum_{i = 1}^n L(y_i, F_{m-1}(x_i) + \gamma h_m(x_i))$$</li>
+<li>Update the model $F_m(x) = F_{m-1}(x) + \gamma_m h_m(x)$
+<br /></li>
+</ol></li>
+
+<li><p>Output $F_M(x)$</p></li>
+</ol>
+
+</div>
+
+    
+<footer class='entry-footer-container'>
+  <div class='entry-footer'>
+  
+  </div>
+</footer>
+
+
+  </article>
+  
+<nav class='entry-nav-container'>
+  <div class='entry-nav'><div class='prev-entry'>
+      <a href='/blog/decision-tree/'>
+        <span aria-hidden='true'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <line x1="20" y1="12" x2="4" y2="12"/>
+  <polyline points="10 18 4 12 10 6"/>
+  
+</svg>
+ Previous</span>
+        <span class='screen-reader'>Previous post: </span>Decision trees</a>
+    </div></div>
+</nav>
+
+  
+</main>
+
+    <footer id='footer' class='footer-container'>
+      <div class='footer'>
+        <div class='social-menu-container'>
+  <nav aria-label='Social Menu'>
+    <ul class='social-menu'><li>
+        <a href='https://github.com/uhoang' target='_blank' rel='noopener'>
+          <span class='screen-reader'>Open Github account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+  
+</svg>
+</a>
+      </li><li>
+        <a href='https://facebook.com/uyen.hoang.399' target='_blank' rel='noopener'>
+          <span class='screen-reader'>Open Facebook account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+  
+</svg>
+</a>
+      </li><li>
+        <a href='https://instagram.com/uhoangth' target='_blank' rel='noopener'>
+          <span class='screen-reader'>Open Instagram account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+  <line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/>
+  
+</svg>
+</a>
+      </li><li>
+        <a href='mailto:uhoangth@gmail.com' target='_blank' rel='noopener'>
+          <span class='screen-reader'>Contact via Email</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+  <polyline points="22,6 12,13 2,6"/>
+  
+</svg>
+</a>
+      </li></ul>
+  </nav>
+</div>
+        <div class='copyright'>
+  <p>
+        
+          
+        
+      
+
+       &copy; 2017-2018 Uyen 
+  </p>
+</div>
+
+      </div>
+    </footer>
+
+  </div><script src='/assets/js/main.5871befd.js'></script><script src='/js/custom.js'></script><script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+  });
+  MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+
+  MathJax.Hub.Config({
+  
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+  });
+</script>
+</body>
+
+</html>
+

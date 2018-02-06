@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Home on Uyen Hoang</title>
+    <link>http://uhoang.github.io/</link>
+    <description>Recent content in Home on Uyen Hoang</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 05 Feb 2018 13:51:06 -0500</lastBuildDate>
+    
+	<atom:link href="http://uhoang.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>About</title>
+      <link>http://uhoang.github.io/about/</link>
+      <pubDate>Mon, 05 Feb 2018 13:51:06 -0500</pubDate>
+      
+      <guid>http://uhoang.github.io/about/</guid>
+      <description>My name is Uyen Hoang. I am a data scientist, locates in Toronto. My works focus on balancing a large-scaled non-probability sample, ideology segmentation and predictive modelings.</description>
+    </item>
+    
+    <item>
+      <title>Ensemble</title>
+      <link>http://uhoang.github.io/blog/ensemble/</link>
+      <pubDate>Sat, 25 Feb 2017 15:16:17 -0500</pubDate>
+      
+      <guid>http://uhoang.github.io/blog/ensemble/</guid>
+      <description>Bagging &amp;amp; Boosting Bagging and boosting are two ensenble methods that a set of weak learner are combined to create a strong learner, which has a better performance than a single learner.
+In learning, the main cause of error are due to noise, bias and variance. The goal of these ensemble methods is to reduce the error from bias and variance. Thus, it produces a more reliable classifier / regressor.</description>
+    </item>
+    
+    <item>
+      <title>Decision trees</title>
+      <link>http://uhoang.github.io/blog/decision-tree/</link>
+      <pubDate>Fri, 17 Feb 2017 14:53:17 -0500</pubDate>
+      
+      <guid>http://uhoang.github.io/blog/decision-tree/</guid>
+      <description>Decision trees The main idea of decision trees is to learn a set of rules that help to classify/predict a new example given a training dataset. In this process, we split the data according to one of the features, so that we end up with the purest possible distribution of the labels
+How are these rules learnt? Explaining decision trees: We start at the root node, which takes an input as an entire training dataset.</description>
+    </item>
+    
+    <item>
+      <title>Modules in python</title>
+      <link>http://uhoang.github.io/blog/py_module/</link>
+      <pubDate>Thu, 09 Feb 2017 15:06:09 -0500</pubDate>
+      
+      <guid>http://uhoang.github.io/blog/py_module/</guid>
+      <description>Modules Writing a module to reuse a number of functions in other programs. The simplest way of writing a module is to create a file with a .py extension that contains functions and variables. Another method is to write the modules in the native language in which the Python interpreter was written, when compiled, they can be used from Python code when using the standard Python interpreter.
+Example:
+import sys #To specify command line arguments to the program in IDE.</description>
+    </item>
+    
+    <item>
+      <title>Note on Factorization machines</title>
+      <link>http://uhoang.github.io/blog/fm/</link>
+      <pubDate>Tue, 24 Jan 2017 15:28:54 -0500</pubDate>
+      
+      <guid>http://uhoang.github.io/blog/fm/</guid>
+      <description>Factorization machines (FM) are a generic model class that can mimic most factorization models just by feature engineering.
+FMs combine feature engineering with factorization models(matrix factorization or tensor factorization) in estimating interactions between categorical variables.
+Factorization Machines Math $$ \hat y := w_0 + \sum_{i= 1}^n w_i x_i + \sum_{i = 1}^n \sum_{j = i+1}^n \hat w_{i,j} x_i x_j $$
+where $\hat w_{i,j}$ are the factorized interaction parameters between pairs</description>
+    </item>
+    
+  </channel>
+</rss>

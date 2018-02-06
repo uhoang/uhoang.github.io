@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+  <meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<meta name='description' content='Modules Writing a module to reuse a number of functions in other programs. The simplest way of writing a module is to create a file with a .py extension that contains functions and variables. Another method is to write the modules in the native language in which the Python interpreter was written, when compiled, they can be used from Python code when using the standard Python interpreter.
+Example:
+import sys #To specify command line arguments to the program in IDE.'>
+
+<meta property='og:title' content='Modules in python • Uyen Hoang'>
+<meta property='og:description' content='Modules Writing a module to reuse a number of functions in other programs. The simplest way of writing a module is to create a file with a .py extension that contains functions and variables. Another method is to write the modules in the native language in which the Python interpreter was written, when compiled, they can be used from Python code when using the standard Python interpreter.
+Example:
+import sys #To specify command line arguments to the program in IDE.'>
+<meta property='og:url' content='http://uhoang.github.io/blog/py_module/'>
+<meta property='og:site_name' content='Uyen Hoang'>
+<meta property='og:type' content='article'><meta property='article:section' content='Blog'><meta property='article:published_time' content='2017-02-09T15:06:09-05:00'/><meta property='article:modified_time' content='2017-02-09T15:06:09-05:00'/><meta name='twitter:card' content='summary'>
+
+<meta name="generator" content="Hugo 0.36" />
+
+  <title>Modules in python • Uyen Hoang</title>
+  <link rel='canonical' href='http://uhoang.github.io/blog/py_module/'>
+  
+  
+  <link rel='icon' href='/favicon.ico'>
+<link rel='stylesheet' href='/assets/css/main.f0e8df71.css'><link rel='stylesheet' href='/css/custom.css'>
+</head>
+
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+  });
+  MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+
+  MathJax.Hub.Config({
+  
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+  });
+</script>
+<body class='page type-blog'>
+  <div class='site'>
+
+    <a class='screen-reader' href='#main'>Skip to Content</a>
+
+    <header id='header' class='header-container'>
+      <div class='header site-header'>
+        <nav id='main-menu' class='main-menu-container' aria-label='Main Menu'>
+  <ul class='main-menu'>
+  <li>
+      <a href='/'>Home</a>
+    </li>
+  <li>
+      <a href='/blog/'>blog</a>
+    </li>
+  <li>
+      <a href='/about/'>About</a>
+    </li>
+  <li>
+      <a href='https://github.com/uhoang'>Repo</a>
+    </li>
+  
+  </ul>
+</nav>
+
+        <div class='header-info'>
+          
+          <p class='site-title title'>Uyen Hoang</p>
+          
+          <p class='site-description subtitle'></p>
+        </div>
+      </div>
+    </header>
+
+
+<main id='main' class='main'>
+  <article lang='en' class='entry'>
+    <header class='header-container'>
+  <div class='header entry-header'>
+    <div class='header-info'>
+      <h1 class='title'>Modules in python</h1>
+      
+
+    </div>
+    
+<div class='meta'>
+  <span class='posted-on'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+  <line x1="16" y1="2" x2="16" y2="6"/>
+  <line x1="8" y1="2" x2="8" y2="6"/>
+  <line x1="3" y1="10" x2="21" y2="10"/>
+  
+</svg>
+<span class='screen-reader'>Posted on </span>
+  <time class='date' datetime='2017-02-09T15:06:09-05:00'>2017, Feb 09</time>
+</span>
+
+  
+  
+<span class='reading-time'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <circle cx="12" cy="12" r="10"/>
+  <polyline points="12 6 12 12 15 15"/>
+  
+</svg>
+2 mins read
+</span>
+
+
+</div>
+
+
+  </div>
+</header>
+
+    
+    
+
+    <div class='entry-content'>
+  
+
+<h1 id="modules">Modules</h1>
+
+<p>Writing a module to reuse a number of functions in other programs. The simplest way of writing a module is to create a file with a <code>.py</code> extension that contains functions and variables. Another method is to write the modules in the native language in which the Python interpreter was written, when compiled, they can be used from Python code when using the standard Python interpreter.</p>
+
+<p>Example:</p>
+
+<pre><code>import sys
+
+#To specify command line arguments to the program in IDE.
+try: 
+    __file__
+except:
+    sys.argv = [sys.argv, 'wordcount.py', '--count', 'small.txt']
+print('The command line arguments are:')
+for i in sys.argv:
+    print(i)
+
+The command line arguments are:
+['/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/ipykernel/__main__.py', '-f']
+wordcount.py
+--count
+small.txt
+
+</code></pre>
+
+<h1 id="byte-compiled-pyc-files">Byte-compiled .pyc files</h1>
+
+<p>Python creates byte-compiled files with the extension <code>.pyc</code> to make importing a module from another program faster since portion of the processing required in importing a module is already done. Also, these byte-compiled files are platform-independent.</p>
+
+<h1 id="a-module-s-name-version">A module&rsquo;s <code>__name__</code>, <code>__version__</code></h1>
+
+<p>Example:</p>
+
+<pre><code>if __name__ == '__main__':
+  print('This program is being run by itself')
+
+else:
+  print('I am being imported from another module')  
+
+</code></pre>
+
+<h3 id="how-it-works">How it works:</h3>
+
+<p>Every Python module has its <code>__name__</code> defined. If this is <code>__main__</code>, that implies that the module is being run standalone by the user. It&rsquo;s common practice for each module to declare it&rsquo;s version number using <code>__version__</code></p>
+
+<h1 id="the-dir-function">The <code>dir</code> function</h1>
+
+<p>Example:</p>
+
+<pre><code>$ python
+&gt;&gt;&gt; import sys
+
+# get names of attributes in sys module
+&gt;&gt;&gt; dir(sys)
+['__displayhook__', '__doc__',
+'argv', 'builtin_module_names',
+'version', 'version_info']
+# only few entries shown here
+
+# get names of attributes for current module
+&gt;&gt;&gt; dir()
+['__annotations__', '__builtins__', '__doc__', '__loader__', 
+'__name__', '__package__', '__spec__', 'sys']
+
+# create a new variable 'a'
+&gt;&gt;&gt; a = 5
+
+&gt;&gt;&gt; dir()
+['__builtins__', '__doc__', '__name__', '__package__', 'a']
+
+# delete/remove a name
+&gt;&gt;&gt; del a
+
+&gt;&gt;&gt; dir()
+['__builtins__', '__doc__', '__name__', '__package__']
+
+</code></pre>
+
+<h3 id="how-it-works-1">How it works:</h3>
+
+<p>The <code>dir</code> function returns a list of attributes that the specified module contains. By default, it returns the list of attributes for the current module without any arguments is passed.</p>
+
+<p>A note on <code>del</code> - this statement is used to delete a variable/name and after statement has run, in this case <code>del a</code>, completely remove <code>a</code> from the current Python environment.</p>
+
+<h1 id="data-structures">Data structures</h1>
+
+<p>Example:</p>
+
+</div>
+
+    
+<footer class='entry-footer-container'>
+  <div class='entry-footer'>
+  
+  </div>
+</footer>
+
+
+  </article>
+  
+<nav class='entry-nav-container'>
+  <div class='entry-nav'><div class='prev-entry'>
+      <a href='/blog/fm/'>
+        <span aria-hidden='true'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <line x1="20" y1="12" x2="4" y2="12"/>
+  <polyline points="10 18 4 12 10 6"/>
+  
+</svg>
+ Previous</span>
+        <span class='screen-reader'>Previous post: </span>Note on Factorization machines</a>
+    </div><div class='next-entry'>
+      <a href='/blog/decision-tree/'>
+        <span class='screen-reader'>Next post: </span>Decision trees<span aria-hidden='true'>Next <svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <line x1="4" y1="12" x2="20" y2="12"/>
+  <polyline points="14 6 20 12 14 18"/>
+  
+</svg>
+</span>
+      </a>
+    </div></div>
+</nav>
+
+  
+</main>
+
+    <footer id='footer' class='footer-container'>
+      <div class='footer'>
+        <div class='social-menu-container'>
+  <nav aria-label='Social Menu'>
+    <ul class='social-menu'><li>
+        <a href='https://github.com/uhoang' target='_blank' rel='noopener'>
+          <span class='screen-reader'>Open Github account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+  
+</svg>
+</a>
+      </li><li>
+        <a href='https://facebook.com/uyen.hoang.399' target='_blank' rel='noopener'>
+          <span class='screen-reader'>Open Facebook account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+  
+</svg>
+</a>
+      </li><li>
+        <a href='https://instagram.com/uhoangth' target='_blank' rel='noopener'>
+          <span class='screen-reader'>Open Instagram account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+  <line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/>
+  
+</svg>
+</a>
+      </li><li>
+        <a href='mailto:uhoangth@gmail.com' target='_blank' rel='noopener'>
+          <span class='screen-reader'>Contact via Email</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+  <polyline points="22,6 12,13 2,6"/>
+  
+</svg>
+</a>
+      </li></ul>
+  </nav>
+</div>
+        <div class='copyright'>
+  <p>
+        
+          
+        
+      
+
+       &copy; 2017-2018 Uyen 
+  </p>
+</div>
+
+      </div>
+    </footer>
+
+  </div><script src='/assets/js/main.5871befd.js'></script><script src='/js/custom.js'></script><script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+  });
+  MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+
+  MathJax.Hub.Config({
+  
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+  });
+</script>
+</body>
+
+</html>
+
