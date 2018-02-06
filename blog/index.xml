@@ -57,7 +57,7 @@ where $\hat w_{i,j}$ are the factorized interaction parameters between pairs</de
     <item>
       <title>Create a Hugo site with Github</title>
       <link>http://uhoang.github.io/blog/create-a-hugo-site-with-github/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 15 Jan 2017 23:28:25 -0500</pubDate>
       
       <guid>http://uhoang.github.io/blog/create-a-hugo-site-with-github/</guid>
       <description>Step 1: Install Hugo For Linux users, you can install hugo through snap or apt-get command in the terminal. See install for further details or if you are running other OS.

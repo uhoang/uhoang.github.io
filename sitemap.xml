@@ -38,6 +38,11 @@
   </url>
   
   <url>
+    <loc>http://uhoang.github.io/blog/create-a-hugo-site-with-github/</loc>
+    <lastmod>2017-01-15T23:28:25-05:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://uhoang.github.io/authors/</loc>
     <priority>0</priority>
   </url>
@@ -45,10 +50,6 @@
   <url>
     <loc>http://uhoang.github.io/categories/</loc>
     <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://uhoang.github.io/blog/create-a-hugo-site-with-github/</loc>
   </url>
   
   <url>
