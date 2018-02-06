@@ -10,5 +10,14 @@
 	<atom:link href="http://uhoang.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
+    <item>
+      <title>Coding</title>
+      <link>http://uhoang.github.io/categories/coding/</link>
+      <pubDate>Thu, 09 Feb 2017 15:06:09 -0500</pubDate>
+      
+      <guid>http://uhoang.github.io/categories/coding/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>

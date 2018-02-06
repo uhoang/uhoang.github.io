@@ -4,20 +4,20 @@
 <head>
   <meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'>
-<meta name='description' content='Decision trees The main idea of decision trees is to learn a set of rules that help to classify/predict a new example given a training dataset. In this process, we split the data according to one of the features, so that we end up with the purest possible distribution of the labels
-How are these rules learnt? Explaining decision trees: We start at the root node, which takes an input as an entire training dataset.'>
+<meta name='description' content='Statistics, Machine Learning, Coding'>
 
-<meta property='og:title' content='Decision trees • Uyen Hoang'>
-<meta property='og:description' content='Decision trees The main idea of decision trees is to learn a set of rules that help to classify/predict a new example given a training dataset. In this process, we split the data according to one of the features, so that we end up with the purest possible distribution of the labels
-How are these rules learnt? Explaining decision trees: We start at the root node, which takes an input as an entire training dataset.'>
-<meta property='og:url' content='http://uhoang.github.io/blog/decision-tree/'>
+<meta property='og:title' content='Category: Coding • Uyen Hoang'>
+<meta property='og:description' content='Statistics, Machine Learning, Coding'>
+<meta property='og:url' content='http://uhoang.github.io/categories/coding/'>
 <meta property='og:site_name' content='Uyen Hoang'>
-<meta property='og:type' content='article'><meta property='article:section' content='Blog'><meta property='article:published_time' content='2017-02-17T14:53:17-05:00'/><meta property='article:modified_time' content='2017-02-17T14:53:17-05:00'/><meta name='twitter:card' content='summary'>
+<meta property='og:type' content='website'><meta property='og:updated_time' content='2018-02-05T13:51:06-05:00'/><meta name='twitter:card' content='summary'>
 
 <meta name="generator" content="Hugo 0.36" />
 
-  <title>Decision trees • Uyen Hoang</title>
-  <link rel='canonical' href='http://uhoang.github.io/blog/decision-tree/'>
+  <title>Category: Coding • Uyen Hoang</title>
+  <link rel='canonical' href='http://uhoang.github.io/categories/coding/'>
+  
+    <link href="http://uhoang.github.io/categories/coding/index.xml" rel="alternate" type="application/rss+xml" title="Uyen Hoang" />
   
   
   <link rel='icon' href='/favicon.ico'>
@@ -58,7 +58,7 @@ How are these rules learnt? Explaining decision trees: We start at the root node
 </script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
 
-<body class='page type-blog'>
+<body class='taxonomy type-categories taxonomyTerm-category'>
   <div class='site'>
 
     <a class='screen-reader' href='#main'>Skip to Content</a>
@@ -94,127 +94,47 @@ How are these rules learnt? Explaining decision trees: We start at the root node
 
 
 <main id='main' class='main'>
-  <article lang='en' class='entry'>
-    <header class='header-container'>
-  <div class='header entry-header'>
-    <div class='header-info'>
-      <h1 class='title'>Decision trees</h1>
+
+  <header class='header-container'>
+    <div class='header list-header'>
+      <div class='header-info'>
+        <h1 class='title'><span class='taxonomy-type'>Category: </span>Coding</h1>
+
+        
+
+      </div>
+    </div>
+  </header>
+
+  
+
+  <div class='list-container'>
+    <ul class='list'>
       
+        <li class='list-item'>
+  <article>
+    <div class='meta'>
+      <span>
+  <span class='screen-reader'>Posted on </span>
+  <time datetime='2017-02-09T15:06:09-05:00'>2017, Feb 09</time>
+</span>
 
     </div>
-    
-<div class='meta'>
-  <span class='posted-on'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
-  
-  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-  <line x1="16" y1="2" x2="16" y2="6"/>
-  <line x1="8" y1="2" x2="8" y2="6"/>
-  <line x1="3" y1="10" x2="21" y2="10"/>
-  
-</svg>
-<span class='screen-reader'>Posted on </span>
-  <time class='date' datetime='2017-02-17T14:53:17-05:00'>2017, Feb 17</time>
-</span>
 
-  
-  
-<span class='reading-time'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
-  
-  <circle cx="12" cy="12" r="10"/>
-  <polyline points="12 6 12 12 15 15"/>
-  
-</svg>
-2 mins read
-</span>
-
-
-</div>
-
-
-  </div>
-</header>
-
-    
-    
-
-    <div class='entry-content'>
-  
-
-<h1 id="decision-trees">Decision trees</h1>
-
-<p>The main idea of decision trees is to learn a set of rules that help to classify/predict a new example given a training dataset. In this process, we split the data according to one of the features, so that we end up with the purest possible distribution of the labels</p>
-
-<h3 id="how-are-these-rules-learnt">How are these rules learnt?</h3>
-
-<h4 id="explaining-decision-trees">Explaining decision trees:</h4>
-
-<p>We start at the root node, which takes an input as an entire training dataset. At each node, we will ask T/F question about one of the features. In response to this question, we split/partition data into 2 subsets.
-Then these subsets becomes an input to two child nodes. The goal of question is to unmix labels as we proceed down. In order to build an effective tree, one needs to understand which questions to ask and when to ask. We use a metric called
-Gini impurity in CART (or entropy in ID3) to measure the uncertainty at a single node. These metric s quantify how much the question helps to unmix the labels. Finally, we use a concept called information gain to measure how much uncertainty the question helps to reduce at each node. We select the question and threshold that give the highest information gain.</p>
-
-<h4 id="when-to-stop">When to stop:</h4>
-
-<p>All child nodes are pure, or the information gain is 0</p>
-
-<h4 id="metrics">Metrics:</h4>
-
-<ol>
-<li>Gini impurity: measure of how often a randomly chosen element from the set would be
-incorrectly labeled if is was randomly labeled according to the distribution of labels
-in the subset
-$$I_g(p) = 1 - \sum_{i = 1}^J p_i^2$$</li>
-</ol>
-
-<p>where $i = {1, &hellip;, J}$ and $p_j$ be fraction of items labeled with class i in the set</p>
-
-<p>2) Entropy:
-$$H(S) = \sum_{x \in X} -p(x) log_2 p(x)$$
-  where <br/>
-  * $S$ - The current dataset for which entropy is being calculated  <br/>
-  * $X$ - Set of classes in $S$ <br/>
-  * $p(x)$ - The proportion of the number of elements in class $x$ to  the number of elements set $S$ <br/></p>
-
-<p>3) Information gain</p>
-
-<p>$$IG(T|l, r) = H(T) - p_{l} H(T|l) - p_{r}H(T|r)$$</p>
-
-</div>
-
-    
-<footer class='entry-footer-container'>
-  <div class='entry-footer'>
-  
-  </div>
-</footer>
-
-
+    <header class='list-item-header'>
+      <h3 class='list-item-title'>
+        <a href='/blog/py_module/'>Modules in Python</a>
+      </h3>
+    </header>
   </article>
-  
-<nav class='entry-nav-container'>
-  <div class='entry-nav'><div class='prev-entry'>
-      <a href='/blog/py_module/'>
-        <span aria-hidden='true'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
-  
-  <line x1="20" y1="12" x2="4" y2="12"/>
-  <polyline points="10 18 4 12 10 6"/>
-  
-</svg>
- Previous</span>
-        <span class='screen-reader'>Previous post: </span>Modules in Python</a>
-    </div><div class='next-entry'>
-      <a href='/blog/ensemble/'>
-        <span class='screen-reader'>Next post: </span>Ensemble methods<span aria-hidden='true'>Next <svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
-  
-  <line x1="4" y1="12" x2="20" y2="12"/>
-  <polyline points="14 6 20 12 14 18"/>
-  
-</svg>
-</span>
-      </a>
-    </div></div>
-</nav>
+</li>
 
-  
+      
+    </ul>
+
+    
+
+  </div>
 </main>
 
     <footer id='footer' class='footer-container'>

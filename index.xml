@@ -41,14 +41,13 @@ How are these rules learnt? Explaining decision trees: We start at the root node
     </item>
     
     <item>
-      <title>Modules in python</title>
+      <title>Modules in Python</title>
       <link>http://uhoang.github.io/blog/py_module/</link>
       <pubDate>Thu, 09 Feb 2017 15:06:09 -0500</pubDate>
       
       <guid>http://uhoang.github.io/blog/py_module/</guid>
-      <description>Modules Writing a module to reuse a number of functions in other programs. The simplest way of writing a module is to create a file with a .py extension that contains functions and variables. Another method is to write the modules in the native language in which the Python interpreter was written, when compiled, they can be used from Python code when using the standard Python interpreter.
-Example:
-import sys #To specify command line arguments to the program in IDE.</description>
+      <description>I recently started reading, A byte of python, and found it a very helpful guide to the language for a beginner. The book was well-written, and explained most of important concepts in simple terms with self evident examples to follow. Thus, it made learning Python simple and interesting.
+As a R programmer, I found that those sections such as modules, data structures and OOP are important to understand the basic building blocks of Python and how to make connection with the language that I’m more familiar with.</description>
     </item>
     
     <item>

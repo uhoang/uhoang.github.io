@@ -4,21 +4,19 @@
 <head>
   <meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'>
-<meta name='description' content='Modules Writing a module to reuse a number of functions in other programs. The simplest way of writing a module is to create a file with a .py extension that contains functions and variables. Another method is to write the modules in the native language in which the Python interpreter was written, when compiled, they can be used from Python code when using the standard Python interpreter.
-Example:
-import sys #To specify command line arguments to the program in IDE.'>
+<meta name='description' content='I recently started reading, A byte of python, and found it a very helpful guide to the language for a beginner. The book was well-written, and explained most of important concepts in simple terms with self evident examples to follow. Thus, it made learning Python simple and interesting.
+As a R programmer, I found that those sections such as modules, data structures and OOP are important to understand the basic building blocks of Python and how to make connection with the language that I’m more familiar with.'>
 
-<meta property='og:title' content='Modules in python • Uyen Hoang'>
-<meta property='og:description' content='Modules Writing a module to reuse a number of functions in other programs. The simplest way of writing a module is to create a file with a .py extension that contains functions and variables. Another method is to write the modules in the native language in which the Python interpreter was written, when compiled, they can be used from Python code when using the standard Python interpreter.
-Example:
-import sys #To specify command line arguments to the program in IDE.'>
+<meta property='og:title' content='Modules in Python • Uyen Hoang'>
+<meta property='og:description' content='I recently started reading, A byte of python, and found it a very helpful guide to the language for a beginner. The book was well-written, and explained most of important concepts in simple terms with self evident examples to follow. Thus, it made learning Python simple and interesting.
+As a R programmer, I found that those sections such as modules, data structures and OOP are important to understand the basic building blocks of Python and how to make connection with the language that I’m more familiar with.'>
 <meta property='og:url' content='http://uhoang.github.io/blog/py_module/'>
 <meta property='og:site_name' content='Uyen Hoang'>
 <meta property='og:type' content='article'><meta property='article:section' content='Blog'><meta property='article:published_time' content='2017-02-09T15:06:09-05:00'/><meta property='article:modified_time' content='2017-02-09T15:06:09-05:00'/><meta name='twitter:card' content='summary'>
 
 <meta name="generator" content="Hugo 0.36" />
 
-  <title>Modules in python • Uyen Hoang</title>
+  <title>Modules in Python • Uyen Hoang</title>
   <link rel='canonical' href='http://uhoang.github.io/blog/py_module/'>
   
   
@@ -100,7 +98,7 @@ import sys #To specify command line arguments to the program in IDE.'>
     <header class='header-container'>
   <div class='header entry-header'>
     <div class='header-info'>
-      <h1 class='title'>Modules in python</h1>
+      <h1 class='title'>Modules in Python</h1>
       
 
     </div>
@@ -126,7 +124,7 @@ import sys #To specify command line arguments to the program in IDE.'>
   <polyline points="12 6 12 12 15 15"/>
   
 </svg>
-2 mins read
+4 mins read
 </span>
 
 
@@ -142,57 +140,125 @@ import sys #To specify command line arguments to the program in IDE.'>
     <div class='entry-content'>
   
 
+<p>I recently started reading, A byte of python, and found it a very helpful guide to the language for a beginner. The book was well-written, and explained most of important concepts in simple terms with self evident examples to follow. Thus, it made learning Python simple and interesting.</p>
+
+<p>As a R programmer, I found that those sections such as modules, data structures and OOP are important to understand the basic building blocks of Python and how to make connection with the language that I’m more familiar with.</p>
+
+<p>In this blog, I’m going to focus on the concept of modules and packages in Python.</p>
+
 <h1 id="modules">Modules</h1>
 
-<p>Writing a module to reuse a number of functions in other programs. The simplest way of writing a module is to create a file with a <code>.py</code> extension that contains functions and variables. Another method is to write the modules in the native language in which the Python interpreter was written, when compiled, they can be used from Python code when using the standard Python interpreter.</p>
+<p>The purpose of writing a module is to reuse a number of functions in other programs. There are several ways to create a module. The simplest way is to create a file with a <code>.py</code> extension that contains functions and variables. Another method is to write the modules in the native language in which the Python interpreter was written, when compiled, they can be used from Python code when using the standard Python interpreter.</p>
 
-<p>Example:</p>
+<p>Example (save as module_using_sys.py):</p>
 
 <pre><code>import sys
 
-#To specify command line arguments to the program in IDE.
-try: 
-    __file__
-except:
-    sys.argv = [sys.argv, 'wordcount.py', '--count', 'small.txt']
 print('The command line arguments are:')
 for i in sys.argv:
     print(i)
 
-The command line arguments are:
-['/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/ipykernel/__main__.py', '-f']
-wordcount.py
---count
-small.txt
+print('\n\nThe PYTHONPATH is', sys.path, '\n')
 
 </code></pre>
+
+<p>Output:</p>
+
+<pre><code>$ python module_using_sys.py we are arguments
+The command line arguments are:
+module_using_sys.py
+we
+are
+arguments
+
+The PYTHONPATH is ['/tmp/python', 
+# many entries are not show here 
+'/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages']
+</code></pre>
+
+<p>To specify command line arguments to the program in IDE, you can use try &hellip; except statement. For the previous example, you can execute the following lines before print command and the for loop.</p>
+
+<pre><code>try: 
+    __file__
+except:
+    sys.argv = [sys.argv, 'we', 'are', 'arguments']
+</code></pre>
+
+<p>Note that the current directory is the directory from which the program is launched. Run <code>import os; print(os.getcwd())</code> to find out the current directory of your program.</p>
 
 <h1 id="byte-compiled-pyc-files">Byte-compiled .pyc files</h1>
 
 <p>Python creates byte-compiled files with the extension <code>.pyc</code> to make importing a module from another program faster since portion of the processing required in importing a module is already done. Also, these byte-compiled files are platform-independent.</p>
 
+<p>NOTE: These <code>.pyc</code> files are usually created in the same directory as the corresponding <code>.pyc</code> files. If Python does not have permission to write to files in that directory, then the <code>.pyc</code> files will not be created.</p>
+
+<h1 id="the-from-import-statement">The from … import statement</h1>
+
+<p>To avoid typing the <code>module_name.function_name</code> or <code>moduel_name.variable_name</code>, you can use the from <code>moduel_name import function_name</code>.</p>
+
+<p>WARNING: To avoid name classes, avoid using the <code>from ... import</code> statement</p>
+
 <h1 id="a-module-s-name-version">A module&rsquo;s <code>__name__</code>, <code>__version__</code></h1>
 
-<p>Example:</p>
+<p>Every Python module has its <code>__name__</code> defined. If it is <code>__main__</code>, that implies that the module is being run standalone by the user. It’s common practice for each module to declare its version number using <code>__version__</code></p>
+
+<p>Example (save as module_using_name.py):</p>
 
 <pre><code>if __name__ == '__main__':
-  print('This program is being run by itself')
+    print('This program is being run by itself')
 
 else:
-  print('I am being imported from another module')  
-
+    print('I am being imported from another module')    
 </code></pre>
 
-<h3 id="how-it-works">How it works:</h3>
+<p>Output:</p>
 
-<p>Every Python module has its <code>__name__</code> defined. If this is <code>__main__</code>, that implies that the module is being run standalone by the user. It&rsquo;s common practice for each module to declare it&rsquo;s version number using <code>__version__</code></p>
+<pre><code>$ python module_using_name.py
+This program is being run by itself
 
-<h1 id="the-dir-function">The <code>dir</code> function</h1>
+$ python
+&gt;&gt;&gt; import module_using_name
+I am being imported from another module
+</code></pre>
+
+<p>An example of making my own modules:</p>
+
+<p>Example (myunit.py):</p>
+
+<pre><code>def scale(x):
+  &quot;&quot;&quot;To transform a list of number to 0-1 scale.&quot;&quot;&quot;
+    new_x = [(v - min(x))/(max(x) - min(x)) for v in x]
+    return new_x
+__version__ = '0.1'
+</code></pre>
+
+<p>Output:</p>
+
+<pre><code>import myunit
+
+xs = list(range(1,6))
+myunit.scale(xs)
+[0.0, 0.25, 0.5, 0.75, 1.0]
+
+print('Version', myunit.__version__)
+Version 0.1
+
+print('what does myunit.scale() does:', myunit.scale.__doc__)
+
+what does myunit.scale() does: To transform a list of number to 0-1 scale.
+</code></pre>
+
+<p>In the above example, I also used docstring, a multi-line string to document the program and makes it easier to understand. You can access the docstring of the function by <code>__doc__</code>.</p>
+
+<h1 id="the-dir-function">The dir function</h1>
+
+<p>The dir function returns a list of attributes that the specified module contains. By default, it returns the list of attributes for the current module without any arguments is passed.</p>
+
+<p>A note on <code>del</code> - this statement is used to delete a variable/name and after statement has run, in this case <code>del a</code>, completely remove a from the current Python environment.</p>
 
 <p>Example:</p>
 
-<pre><code>$ python
-&gt;&gt;&gt; import sys
+<pre><code>&gt;&gt;&gt; import sys
 
 # get names of attributes in sys module
 &gt;&gt;&gt; dir(sys)
@@ -220,22 +286,47 @@ else:
 
 </code></pre>
 
-<h3 id="how-it-works-1">How it works:</h3>
+<h1 id="packages">Packages</h1>
 
-<p>The <code>dir</code> function returns a list of attributes that the specified module contains. By default, it returns the list of attributes for the current module without any arguments is passed.</p>
-
-<p>A note on <code>del</code> - this statement is used to delete a variable/name and after statement has run, in this case <code>del a</code>, completely remove <code>a</code> from the current Python environment.</p>
-
-<h1 id="data-structures">Data structures</h1>
+<p>Packages are just folders of modules with a special <code>__init__.py</code> file that indicates to Python that this folder is special because it contains Python modules.</p>
 
 <p>Example:</p>
+
+<blockquote>
+<p>Let’s say we want to create a package called ‘world’ with subpackages ‘asia’, ‘africa’, etc. and these subpackages in turn contain modules like ‘india’, ‘madagascar’, etc.</p>
+</blockquote>
+
+<p>This is how the structure of the folders should look:</p>
+
+<pre><code>- &lt;some folder present in the sys.path&gt;/
+    - world/
+        - __init__.py
+        - asia/
+            - __init__.py
+            - india/
+                - __init__.py
+                - foo.py
+        - africa/
+            - __init__.py
+            - madagascar/
+                - __init__.py
+                - bar.py
+</code></pre>
 
 </div>
 
     
 <footer class='entry-footer-container'>
   <div class='entry-footer'>
+  <div class='categories'>
+  <span class='taxonomyTerm-icon'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
   
+  <path d="M22,19a2,2,0,0,1-2,2H4a2,2,0,0,1-2-2V5A2,2,0,0,1,4,3H9l2,3h9a2,2,0,0,1,2,2Z"/>
+  
+</svg>
+</span>
+  <span class='screen-reader'>Categories: </span><a class='category' href='/categories/coding'>Coding</a></div>
+
   </div>
 </footer>
 
