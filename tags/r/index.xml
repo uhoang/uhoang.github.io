@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>R on Uyen Hoang</title>
+    <link>http://uhoang.github.io/tags/r/</link>
+    <description>Recent content in R on Uyen Hoang</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 10 Oct 2017 16:07:03 -0500</lastBuildDate>
+    
+	<atom:link href="http://uhoang.github.io/tags/r/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Consumer Lifestyle Clustering</title>
+      <link>http://uhoang.github.io/project/consumer-lifestyle-clustering/</link>
+      <pubDate>Tue, 10 Oct 2017 16:07:03 -0500</pubDate>
+      
+      <guid>http://uhoang.github.io/project/consumer-lifestyle-clustering/</guid>
+      <description>Recently, I&amp;rsquo;ve built a consumer lifestyle segmentation tool for the analytics and insight team at Moutain Equipment Co-op. The main purpose of this project is to replicate a typing tool, that has previously been developed for US consumers by McKinsey&amp;rsquo;s data team. This tool is leveraged to design a scalable, customer-centric marketing solutions. The analysis for this tool is written in R. For futher details, you can visit my Github repository.</description>
+    </item>
+    
+  </channel>
+</rss>

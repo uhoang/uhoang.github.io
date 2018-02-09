@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+  <meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<meta name='description' content='Recently, I&rsquo;ve built a consumer lifestyle segmentation tool for the analytics and insight team at Moutain Equipment Co-op. The main purpose of this project is to replicate a typing tool, that has previously been developed for US consumers by McKinsey&rsquo;s data team. This tool is leveraged to design a scalable, customer-centric marketing solutions. The analysis for this tool is written in R. For futher details, you can visit my Github repository.'>
+
+<meta property='og:title' content='Consumer Lifestyle Clustering • Uyen Hoang'>
+<meta property='og:description' content='Recently, I&rsquo;ve built a consumer lifestyle segmentation tool for the analytics and insight team at Moutain Equipment Co-op. The main purpose of this project is to replicate a typing tool, that has previously been developed for US consumers by McKinsey&rsquo;s data team. This tool is leveraged to design a scalable, customer-centric marketing solutions. The analysis for this tool is written in R. For futher details, you can visit my Github repository.'>
+<meta property='og:url' content='http://uhoang.github.io/project/consumer-lifestyle-clustering/'>
+<meta property='og:site_name' content='Uyen Hoang'>
+<meta property='og:type' content='article'><meta property='article:section' content='Project'><meta property='article:tag' content='clustering'><meta property='article:tag' content='R'><meta property='article:published_time' content='2017-10-10T16:07:03-05:00'/><meta property='article:modified_time' content='2017-10-10T16:07:03-05:00'/><meta name='twitter:card' content='summary'>
+
+<meta name="generator" content="Hugo 0.36" />
+
+  <title>Consumer Lifestyle Clustering • Uyen Hoang</title>
+  <link rel='canonical' href='http://uhoang.github.io/project/consumer-lifestyle-clustering/'>
+  
+  
+  <link rel='icon' href='/favicon.ico'>
+<link rel='stylesheet' href='/assets/css/main.f0e8df71.css'><link rel='stylesheet' href='/css/custom.css'>
+</head>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.js" integrity="sha384-/y1Nn9+QQAipbNQWU65krzJralCnuOasHncUFXGkdwntGeSvQicrYkiUBwsgUqc1" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/contrib/auto-render.min.js" integrity="sha384-dq1/gEHSxPZQ7DdrM82ID4YVol9BYyU7GbWlIwnwyPzotpoc57wDw/guX8EaYGPx" crossorigin="anonymous"></script>
+<script>
+  renderMathInElement(document.body,
+    {
+        delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "$", right: "$", display: false},
+        ]
+    }
+  );
+
+  var inlineMathArray = document.querySelectorAll("script[type='math/tex']");
+  for (var i = 0; i < inlineMathArray.length; i++) {
+    var inlineMath = inlineMathArray[i];
+    var tex = inlineMath.innerText || inlineMath.textContent;
+    var replaced = document.createElement("span");
+    replaced.innerHTML = katex.renderToString(tex, {displayMode: false});
+    inlineMath.parentNode.replaceChild(replaced, inlineMath);
+  }
+
+  var displayMathArray = document.querySelectorAll("script[type='math/tex; mode=display']");
+  for (var i = 0; i < displayMathArray.length; i++) {
+    var displayMath = displayMathArray[i];
+    var tex = displayMath.innerHTML;
+    var replaced = document.createElement("span");
+    replaced.innerHTML = katex.renderToString(tex.replace(/%.*/g, ''), {displayMode: true});
+    displayMath.parentNode.replaceChild(replaced, displayMath);
+  }
+</script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
+
+<body class='page type-project'>
+  <div class='site'>
+
+    <a class='screen-reader' href='#main'>Skip to Content</a>
+
+    <header id='header' class='header-container'>
+      <div class='header site-header'>
+        <nav id='main-menu' class='main-menu-container' aria-label='Main Menu'>
+  <ul class='main-menu'>
+  <li>
+      <a href='/'>Home</a>
+    </li>
+  <li>
+      <a href='/blog/'>blog</a>
+    </li>
+  <li>
+      <a href='/project/'>project</a>
+    </li>
+  <li>
+      <a href='/about/'>About</a>
+    </li>
+  <li>
+      <a href='https://github.com/uhoang'>Github</a>
+    </li>
+  
+  </ul>
+</nav>
+
+        <div class='header-info'>
+          
+          <p class='site-title title'>Uyen Hoang</p>
+          
+          <p class='site-description subtitle'>Statistics, Machine Learning, Coding</p>
+        </div>
+      </div>
+    </header>
+
+
+<main id='main' class='main'>
+  <article lang='en' class='entry'>
+    <header class='header-container'>
+  <div class='header entry-header'>
+    <div class='header-info'>
+      <h1 class='title'>Consumer Lifestyle Clustering</h1>
+      
+
+    </div>
+    
+<div class='meta'>
+  <span class='posted-on'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+  <line x1="16" y1="2" x2="16" y2="6"/>
+  <line x1="8" y1="2" x2="8" y2="6"/>
+  <line x1="3" y1="10" x2="21" y2="10"/>
+  
+</svg>
+<span class='screen-reader'>Posted on </span>
+  <time class='date' datetime='2017-10-10T16:07:03-05:00'>2017, Oct 10</time>
+</span>
+
+  
+  
+<span class='reading-time'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <circle cx="12" cy="12" r="10"/>
+  <polyline points="12 6 12 12 15 15"/>
+  
+</svg>
+6 mins read
+</span>
+
+
+</div>
+
+
+  </div>
+</header>
+
+    
+    
+
+    <div class='entry-content'>
+  
+
+<p>Recently, I&rsquo;ve built a consumer lifestyle segmentation tool for the analytics and insight team at Moutain Equipment Co-op. The main purpose of this project is to replicate a typing tool, that has previously been developed for US consumers by McKinsey&rsquo;s data team. This tool is leveraged to design a scalable, customer-centric marketing solutions. The analysis for this tool is written in R. For futher details, you can visit <a href="https://github.com/uhoang/mec_project/" target="_blank">my Github repository</a>.</p>
+
+<h3 id="objectives">Objectives:</h3>
+
+<ul>
+<li>Build health lifestyle segmentation for Canadian consumers using an online survey of 2000 responses arranged by a panel provider.</li>
+<li>Identify clusters and intepret its meaning via descriptive statistics</li>
+<li>Perform pairwise comparisions among group means on profiling questions</li>
+<li>Future work &ndash; prototyping a lifestyle scoring tool to predict a class / segment for a new consumer</li>
+</ul>
+
+<h3 id="methods">Methods</h3>
+
+<p>In this section, I will describe the clustering approach, its rationales and main findings.</p>
+
+<h6 id="1-data">1. Data</h6>
+
+<ul>
+<li>The data contains a series of multi-select questions on health conditions, that respondents are currently suffer from or are concerned about preventing in the future. The answers are captured by a set of binary variables. Each represents one category in the question, in which the value 1 means the category is selected, and the value 0 means otherwise.</li>
+<li>It also includes additional profiling questions such as gender, age, frequency of participation in some activities, time recently spending on certain products, rate personal lifestyle goals and statements.</li>
+</ul>
+
+<h6 id="2-analysis">2. Analysis:</h6>
+
+<ul>
+<li><p><strong>Filter data</strong>: I remove any low-quality observation, in which a respondent speeds through the survey by giving low-effort responses, and engages in variety of other behaviors that negatively impact response quality.</p></li>
+
+<li><p><strong>Transform inputs</strong>: I regroup some health/prevention conditions into category to reduce the complexity of the inputs. This step helps to produce a cleaner interpretation of clusters in a later step. Age is dichotomized into two groups, below 58 and 58+. This threshold is based on the previous study. But other option could be explored. This coding makes all variables comparable.</p></li>
+
+<li><p><strong>Select a similarity measure</strong>: In order to group observations together, I first need to define some notion of similarity between observations. Since the data contains asymmetric binary variables, I have to use a distance metric that can handle this data type. In this case, I use a metric called Gower distance. The distance is always a number between 0 (identical) and 1 (maximally dissimilar). For each binary variable, Gower distance uses one minus Jaccard&rsquo;s Similarity Coefficient to calculate the distance. Then, the final distance is wobtained as a weighted sum of distances for each variable.</p></li>
+
+<li><p><strong>Select a clustering algorithm</strong>: <br/></p>
+
+<ul>
+<li>I run both Partitioning around Medoids (PAM) and k-means algorithms for clustering. Both algorithms have quadratic run time and memory (i.e: $O(n^2)$). However, PAM is more robust to noise and outliers when compared to k-means, and it has the added benefit of having an observation serve as the exemplar for each cluster.</li>
+<li>Note that algorithms have similar procedure except PAM uses an observation as a cluster center (medoid), while k-means has a cluster center (centroid) defined by the mean of all observations in that cluster. Thus, I will only present the iterative steps in PAM:
+
+<ul>
+<li>Choose k random entities to be the medoids</li>
+<li>Assign every entity to its closest medoid (using the custom distance matrix)</li>
+<li>For each cluster, identify the observation that woud yield the lowest average distance to other members in the cluster. Then make this observation the new medoid.</li>
+<li>If at least one medoid has changed, return to the second step. Otherwise, end the algorithm.
+<br /></li>
+</ul></li>
+</ul></li>
+
+<li><p><strong>Select the number of clusters</strong>: A variety of metrics exist to help choose the number of clusters. In this analysis, I use Silhouette width as a validation metric. It is an aggregated measure of how similar an observation is to its own cluster compared its closest neighboring cluster. The metric can range from -1 to 1, where higher values are better. I then plot silhouette width for clusters ranging from 2 to 10 for both algorithms. From the Figure 1, we see that the PAM algorithm with 5 clusters yields the highest Silhouette value. On the other hand, K-Means with 2 clusters gives the highest Silhouette score. <br/></p></li>
+</ul>
+
+<p>
+<figure >
+    
+        <img src="/images/pam_silhouette_width_vs_num_clusters.png" />
+    
+    
+    <figcaption>
+        <h4>Fig.1: Silhouette width by number of cluster in PAM</h4>
+        
+    </figcaption>
+    
+</figure>
+
+<br/>
+
+<figure >
+    
+        <img src="/images/kmean_silhouette_width_vs_num_clusters.png" />
+    
+    
+    <figcaption>
+        <h4>Fig.2: Silhouette width by number of cluster in k-means</h4>
+        
+    </figcaption>
+    
+</figure>
+
+<br/></p>
+
+<ul>
+<li><strong>Visualize clusters in lower dimensions</strong>: In order to see how well-seperated clusters that PAM or k-means is able to detect, I employ t-distributed stochastic neighborhood embedding (t-SNE) to visualize clusters in 2D. The technique tries to reduce the dimensionality of inputs, but still preserve its local structure. For further details, see the <a href="https://lvdmaaten.github.io/tsne/" target="_blank">t-SNE software</a> developed by Laurens van der Maaten. <br/></li>
+</ul>
+
+<p>
+<figure >
+    
+        <img src="/images/pam_tsne_5clusters.png" />
+    
+    
+    <figcaption>
+        <h4>Fig.3: t-SNE</h4>
+        
+    </figcaption>
+    
+</figure>
+
+The plot shows that some clusters are unstable or not very well-seperated from other clusters. To probe further, I employ several resampling schemes(bootstrap, subsetting, jittering, replacement of points by noise) to assess the stability of these clusters. These methods are implemented in <a href="https://www.rdocumentation.org/packages/fpc/versions/2.1-11/topics/clusterboot" target="_blank"><code>clusterboot</code></a> [in package fpc] by Christian Hennig.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R"><span style="color:#f92672">*</span> Cluster stability assessment <span style="color:#f92672">*</span>
+Cluster method<span style="color:#f92672">:</span>  clara<span style="color:#f92672">/</span>pam 
+Full clustering results are given as parameter result
+of the clusterboot object, which also provides further statistics
+of the resampling results.
+Number of resampling runs<span style="color:#f92672">:</span>  <span style="color:#ae81ff">100</span> 
+
+Number of clusters found <span style="color:#66d9ef">in</span> data<span style="color:#f92672">:</span>  <span style="color:#ae81ff">5</span> 
+
+ Clusterwise Jaccard bootstrap (omitting multiple points) <span style="color:#66d9ef">mean</span><span style="color:#f92672">:</span>
+[<span style="color:#ae81ff">1</span>] <span style="color:#ae81ff">0.5212346</span> <span style="color:#ae81ff">0.4841230</span> <span style="color:#ae81ff">0.7535759</span> <span style="color:#ae81ff">0.6628636</span> <span style="color:#ae81ff">0.6756281</span>
+dissolved<span style="color:#f92672">:</span>
+[<span style="color:#ae81ff">1</span>] <span style="color:#ae81ff">53</span> <span style="color:#ae81ff">65</span>  <span style="color:#ae81ff">4</span> <span style="color:#ae81ff">27</span> <span style="color:#ae81ff">23</span>
+recovered<span style="color:#f92672">:</span>
+[<span style="color:#ae81ff">1</span>] <span style="color:#ae81ff">21</span> <span style="color:#ae81ff">25</span> <span style="color:#ae81ff">55</span> <span style="color:#ae81ff">42</span> <span style="color:#ae81ff">38</span>
+ Clusterwise Jaccard subsetting <span style="color:#66d9ef">mean</span><span style="color:#f92672">:</span>
+[<span style="color:#ae81ff">1</span>] <span style="color:#ae81ff">0.4776582</span> <span style="color:#ae81ff">0.4270802</span> <span style="color:#ae81ff">0.7189634</span> <span style="color:#ae81ff">0.5886231</span> <span style="color:#ae81ff">0.6485604</span>
+dissolved<span style="color:#f92672">:</span>
+[<span style="color:#ae81ff">1</span>] <span style="color:#ae81ff">57</span> <span style="color:#ae81ff">74</span>  <span style="color:#ae81ff">6</span> <span style="color:#ae81ff">41</span> <span style="color:#ae81ff">23</span>
+recovered<span style="color:#f92672">:</span>
+[<span style="color:#ae81ff">1</span>] <span style="color:#ae81ff">13</span> <span style="color:#ae81ff">15</span> <span style="color:#ae81ff">40</span> <span style="color:#ae81ff">25</span> <span style="color:#ae81ff">31</span>
+ Clusterwise Jaccard replacement by noise <span style="color:#66d9ef">mean</span><span style="color:#f92672">:</span>
+[<span style="color:#ae81ff">1</span>] <span style="color:#ae81ff">0.8392858</span> <span style="color:#ae81ff">0.9193778</span> <span style="color:#ae81ff">0.9520704</span> <span style="color:#ae81ff">0.9101964</span> <span style="color:#ae81ff">0.9417290</span>
+dissolved<span style="color:#f92672">:</span>
+[<span style="color:#ae81ff">1</span>] <span style="color:#ae81ff">8</span> <span style="color:#ae81ff">6</span> <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">7</span> <span style="color:#ae81ff">1</span>
+recovered<span style="color:#f92672">:</span>
+[<span style="color:#ae81ff">1</span>] <span style="color:#ae81ff">68</span> <span style="color:#ae81ff">90</span> <span style="color:#ae81ff">96</span> <span style="color:#ae81ff">92</span> <span style="color:#ae81ff">98</span>
+ Clusterwise Jaccard jittering <span style="color:#66d9ef">mean</span><span style="color:#f92672">:</span>
+[<span style="color:#ae81ff">1</span>] <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">1</span>
+dissolved<span style="color:#f92672">:</span>
+[<span style="color:#ae81ff">1</span>] <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span>
+recovered<span style="color:#f92672">:</span>
+[<span style="color:#ae81ff">1</span>] <span style="color:#ae81ff">100</span> <span style="color:#ae81ff">100</span> <span style="color:#ae81ff">100</span> <span style="color:#ae81ff">100</span> <span style="color:#ae81ff">100</span></code></pre></div>
+<p>The mean value of Jaccard coefficient over all the bootstrap iterations suggests that two clusters are considered unstable and could be dissolved into others. Some clusters captures a certain pattern in the data. <br/></p>
+
+<ul>
+<li><strong>Cluster Interpretation</strong>: From the results of the above stability assessment, I decide to run the PAM algorithm with three clusters. After that I run summary on each cluster to interpret the clusters. For example, it seems that Cluster 1 is mainly the people who is suffering chronic and serious conditions like high cholesterol and diabetes they want treat or prevent. They tend to be older, and often feel fatigue / lack of energy. Similar fashion can be applied to other profiling questions to infer the cluster description.</li>
+</ul>
+
+<pre><code>[[1]]
+   age_break      COND_chronic_diseases  PREVENTION_chronic_diseases
+ Min.   :0.0000   Min.   :0.0000         Min.   :0.0000        
+ 1st Qu.:0.0000   1st Qu.:0.0000         1st Qu.:1.0000        
+ Median :0.0000   Median :1.0000         Median :1.0000        
+ Mean   :0.4742   Mean   :0.6761         Mean   :0.7629        
+ 3rd Qu.:1.0000   3rd Qu.:1.0000         3rd Qu.:1.0000        
+ Max.   :1.0000   Max.   :1.0000         Max.   :1.0000        
+
+omit...
+</code></pre>
+
+<h6 id="3-future-work">3. Future work</h6>
+
+<ul>
+<li>Applying divisive hierarchical clustering</li>
+<li>Employing two-step clustering when dealing with larger samples</li>
+<li>Prototyping a lifestyle scoring tool to predict a class / segment for a new consumer</li>
+</ul>
+
+<!--    2.6. Assess the cluster stability <br/>
+   &nbsp;&nbsp;&nbsp; I employed clusterboot algorithm, which uses the Jaccard coefficient to measure the similarity between sets generated over different bootstrap samples. The cluster stability of each cluster in the original clustering is the mean value of its Jaccard coefficient over all the bootstrap iterations. As a rule of thumb, clusters with a stability value less than 0.6 should be considered unstable. Values between 0.6 and 0.75 indicate that the cluster is measuring a pattern in the data, but there isn’t high certainty about which points should be clustered together. Clusters with stability values above about 0.85 can be considered highly stable (they’re likely to be real clusters). --> 
+
+</div>
+
+    
+<footer class='entry-footer-container'>
+  <div class='entry-footer'>
+  <div class='tags'>
+  <span class='taxonomyTerm-icon'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M20.59,13.41l-7.17,7.17a2,2,0,0,1-2.83,0L2,12V2H12l8.59,8.59A2,2,0,0,1,20.59,13.41Z"/>
+  <line x1="7" y1="7" x2="7" y2="7"/>
+  
+</svg>
+</span>
+  <span class='screen-reader'>Tags: </span><a class='tag' href='/tags/clustering'>Clustering</a>, <a class='tag' href='/tags/r'>R</a></div>
+
+  </div>
+</footer>
+
+
+  </article>
+  
+  
+</main>
+
+    <footer id='footer' class='footer-container'>
+      <div class='footer'>
+        <div class='social-menu-container'>
+  <nav aria-label='Social Menu'>
+    <ul class='social-menu'><li>
+        <a href='mailto:uhoangth@gmail.com' target='_blank' rel='noopener'>
+          <span class='screen-reader'>Contact via Email</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+  <polyline points="22,6 12,13 2,6"/>
+  
+</svg>
+</a>
+      </li><li>
+        <a href='https://linkedin.com/in/uyenhoang' target='_blank' rel='noopener'>
+          <span class='screen-reader'>Open Linkedin account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path stroke-width="1.8" d="m5.839218,4.101561c0,1.211972 -0.974141,2.194011 -2.176459,2.194011s-2.176459,-0.982039 -2.176459,-2.194011c0,-1.211094 0.974141,-2.194011 2.176459,-2.194011s2.176459,0.982917 2.176459,2.194011zm0.017552,3.94922l-4.388022,0l0,14.04167l4.388022,0l0,-14.04167zm7.005038,0l-4.359939,0l0,14.04167l4.360816,0l0,-7.370999c0,-4.098413 5.291077,-4.433657 5.291077,0l0,7.370999l4.377491,0l0,-8.89101c0,-6.915523 -7.829986,-6.66365 -9.669445,-3.259423l0,-1.891237z"/>
+  
+</svg>
+</a>
+      </li><li>
+        <a href='https://github.com/uhoang' target='_blank' rel='noopener'>
+          <span class='screen-reader'>Open Github account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+  
+</svg>
+</a>
+      </li><li>
+        <a href='https://facebook.com/uyen.hoang.399' target='_blank' rel='noopener'>
+          <span class='screen-reader'>Open Facebook account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+  
+</svg>
+</a>
+      </li><li>
+        <a href='https://instagram.com/uhoangth' target='_blank' rel='noopener'>
+          <span class='screen-reader'>Open Instagram account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+  <line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/>
+  
+</svg>
+</a>
+      </li></ul>
+  </nav>
+</div>
+        <div class='copyright'>
+  <p>
+        
+          
+        
+      
+
+       &copy; 2017-2018 Uyen 
+  </p>
+</div>
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
+
+      </div>
+    </footer>
+
+  </div><script src='/assets/js/main.5871befd.js'></script><script src='/js/custom.js'></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.js" integrity="sha384-/y1Nn9+QQAipbNQWU65krzJralCnuOasHncUFXGkdwntGeSvQicrYkiUBwsgUqc1" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/contrib/auto-render.min.js" integrity="sha384-dq1/gEHSxPZQ7DdrM82ID4YVol9BYyU7GbWlIwnwyPzotpoc57wDw/guX8EaYGPx" crossorigin="anonymous"></script>
+<script>
+  renderMathInElement(document.body,
+    {
+        delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "$", right: "$", display: false},
+        ]
+    }
+  );
+
+  var inlineMathArray = document.querySelectorAll("script[type='math/tex']");
+  for (var i = 0; i < inlineMathArray.length; i++) {
+    var inlineMath = inlineMathArray[i];
+    var tex = inlineMath.innerText || inlineMath.textContent;
+    var replaced = document.createElement("span");
+    replaced.innerHTML = katex.renderToString(tex, {displayMode: false});
+    inlineMath.parentNode.replaceChild(replaced, inlineMath);
+  }
+
+  var displayMathArray = document.querySelectorAll("script[type='math/tex; mode=display']");
+  for (var i = 0; i < displayMathArray.length; i++) {
+    var displayMath = displayMathArray[i];
+    var tex = displayMath.innerHTML;
+    var replaced = document.createElement("span");
+    replaced.innerHTML = katex.renderToString(tex.replace(/%.*/g, ''), {displayMode: true});
+    displayMath.parentNode.replaceChild(replaced, displayMath);
+  }
+</script>
+</body>
+
+</html>
+

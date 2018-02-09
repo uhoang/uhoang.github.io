@@ -6,10 +6,19 @@
     <description>Recent content in Tags on Uyen Hoang</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 09 Feb 2017 15:06:09 -0500</lastBuildDate>
+    <lastBuildDate>Tue, 10 Oct 2017 16:07:03 -0500</lastBuildDate>
     
 	<atom:link href="http://uhoang.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Clustering</title>
+      <link>http://uhoang.github.io/tags/clustering/</link>
+      <pubDate>Tue, 10 Oct 2017 16:07:03 -0500</pubDate>
+      
+      <guid>http://uhoang.github.io/tags/clustering/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Coding</title>
@@ -35,6 +44,15 @@
       <pubDate>Sun, 15 Jan 2017 23:28:25 -0500</pubDate>
       
       <guid>http://uhoang.github.io/tags/markdown/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>R</title>
+      <link>http://uhoang.github.io/tags/r/</link>
+      <pubDate>Tue, 10 Oct 2017 16:07:03 -0500</pubDate>
+      
+      <guid>http://uhoang.github.io/tags/r/</guid>
       <description></description>
     </item>
     
