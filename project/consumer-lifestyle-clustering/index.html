@@ -4,10 +4,10 @@
 <head>
   <meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'>
-<meta name='description' content='Recently, I&rsquo;ve built a consumer lifestyle segmentation tool for the analytics and insight team at Moutain Equipment Co-op. The main purpose of this project is to replicate a typing tool, that has previously been developed for US consumers by McKinsey&rsquo;s data team. This tool is leveraged to design a scalable, customer-centric marketing solution. The analysis for this tool is written in R. For futher details, you can visit my Github repository.'>
+<meta name='description' content='Recently, I’ve built a consumer lifestyle segmentation tool for the analytics and insight team at Mountain Equipment Co-op. The main purpose of this project is to replicate a typing tool, that has previously been developed for US consumers by McKinsey&rsquo;s data team. This tool is leveraged to design a scalable, customer-centric marketing solution. The analysis for this tool is written in R. For further details, you can visit my Github repository.'>
 
 <meta property='og:title' content='Consumer Lifestyle Clustering • Uyen Hoang'>
-<meta property='og:description' content='Recently, I&rsquo;ve built a consumer lifestyle segmentation tool for the analytics and insight team at Moutain Equipment Co-op. The main purpose of this project is to replicate a typing tool, that has previously been developed for US consumers by McKinsey&rsquo;s data team. This tool is leveraged to design a scalable, customer-centric marketing solution. The analysis for this tool is written in R. For futher details, you can visit my Github repository.'>
+<meta property='og:description' content='Recently, I’ve built a consumer lifestyle segmentation tool for the analytics and insight team at Mountain Equipment Co-op. The main purpose of this project is to replicate a typing tool, that has previously been developed for US consumers by McKinsey&rsquo;s data team. This tool is leveraged to design a scalable, customer-centric marketing solution. The analysis for this tool is written in R. For further details, you can visit my Github repository.'>
 <meta property='og:url' content='http://uhoang.github.io/project/consumer-lifestyle-clustering/'>
 <meta property='og:site_name' content='Uyen Hoang'>
 <meta property='og:type' content='article'><meta property='article:section' content='Project'><meta property='article:tag' content='clustering'><meta property='article:tag' content='R'><meta property='article:published_time' content='2017-10-10T16:07:03-05:00'/><meta property='article:modified_time' content='2017-10-10T16:07:03-05:00'/><meta name='twitter:card' content='summary'>
@@ -141,14 +141,14 @@
     <div class='entry-content'>
   
 
-<p>Recently, I&rsquo;ve built a consumer lifestyle segmentation tool for the analytics and insight team at Moutain Equipment Co-op. The main purpose of this project is to replicate a typing tool, that has previously been developed for US consumers by McKinsey&rsquo;s data team. This tool is leveraged to design a scalable, customer-centric marketing solution. The analysis for this tool is written in R. For futher details, you can visit <a href="https://github.com/uhoang/mec/" target="_blank">my Github repository</a>.</p>
+<p>Recently, I’ve built a consumer lifestyle segmentation tool for the analytics and insight team at Mountain Equipment Co-op. The main purpose of this project is to replicate a typing tool, that has previously been developed for US consumers by McKinsey&rsquo;s data team. This tool is leveraged to design a scalable, customer-centric marketing solution. The analysis for this tool is written in R. For further details, you can visit <a href="https://github.com/uhoang/mec/" target="_blank">my Github repository</a>.</p>
 
 <h3 id="objectives">Objectives:</h3>
 
 <ul>
 <li>Build health lifestyle segmentation for Canadian consumers using an online survey of 2000 responses arranged by a panel provider.</li>
-<li>Identify clusters and intepret its meaning via descriptive statistics</li>
-<li>Perform pairwise comparisions among group means on profiling questions</li>
+<li>Identify clusters and interpret its meaning via descriptive statistics</li>
+<li>Perform pairwise comparisons among group means on profiling questions</li>
 <li>Future work &ndash; prototyping a lifestyle scoring tool to predict a class / segment for a new consumer</li>
 </ul>
 
@@ -170,7 +170,7 @@
 
 <li><p><strong>Transform inputs</strong>: I regroup some health/prevention conditions into category to reduce the complexity of the inputs. This step helps to produce a cleaner interpretation of clusters in a later step. Age is dichotomized into two groups, below 58 and 58+. This threshold is based on the previous study. But other option could be explored. This coding makes all variables comparable.</p></li>
 
-<li><p><strong>Select a similarity measure</strong>: In order to group observations together, I first need to define some notion of similarity between observations. Since the data contains asymmetric binary variables, I have to use a distance metric that can handle this data type. In this case, I use a metric called Gower distance. The distance is always a number between 0 (identical) and 1 (maximally dissimilar). For each binary variable, Gower distance uses one minus Jaccard&rsquo;s Similarity Coefficient to calculate the distance. Then, the final distance is wobtained as a weighted sum of distances for each variable.</p></li>
+<li><p><strong>Select a similarity measure</strong>: In order to group observations together, I first need to define some notion of similarity between observations. Since the data contains asymmetric binary variables, I have to use a distance metric that can handle this data type. In this case, I use a metric called Gower distance. The distance is always a number between 0 (identical) and 1 (maximally dissimilar). For each binary variable, Gower distance uses one minus Jaccard&rsquo;s Similarity Coefficient to calculate the distance. Then, the final distance is obtained as a weighted sum of distances for each variable.</p></li>
 
 <li><p><strong>Select a clustering algorithm</strong>: <br/></p>
 
@@ -181,7 +181,7 @@
 <ul>
 <li>Choose k random entities to be the medoids</li>
 <li>Assign every entity to its closest medoid (using the custom distance matrix)</li>
-<li>For each cluster, identify the observation that woud yield the lowest average distance to other members in the cluster. Then make this observation the new medoid.</li>
+<li>For each cluster, identify the observation that would yield the lowest average distance to other members in the cluster. Then make this observation the new medoid.</li>
 <li>If at least one medoid has changed, return to the second step. Otherwise, end the algorithm.
 <br /></li>
 </ul></li>
@@ -220,7 +220,7 @@
 <br/></p>
 
 <ul>
-<li><strong>Visualize clusters in lower dimensions</strong>: In order to see how well-seperated clusters that PAM or k-means is able to detect, I employ t-distributed stochastic neighborhood embedding (t-SNE) to visualize clusters in 2D. The technique tries to reduce the dimensionality of inputs, but still preserve its local structure. For further details, see the <a href="https://lvdmaaten.github.io/tsne/" target="_blank">t-SNE software</a> developed by Laurens van der Maaten. <br/></li>
+<li><strong>Visualize clusters in lower dimensions</strong>: In order to see how well-separated clusters that PAM or k-means is able to detect, I employ t-distributed stochastic neighbor embedding (t-SNE) to visualize clusters in 2D. The technique tries to reduce the dimensionality of inputs, but still preserve its local structure. For further details, see the <a href="https://lvdmaaten.github.io/tsne/" target="_blank">t-SNE software</a> developed by Laurens van der Maaten. <br/></li>
 </ul>
 
 <p>
@@ -236,7 +236,7 @@
     
 </figure>
 
-The plot shows that some clusters are unstable or not very well-seperated from other clusters. To probe further, I employ several resampling schemes(bootstrap, subsetting, jittering, replacement of points by noise) to assess the stability of these clusters. These methods are implemented in <a href="https://www.rdocumentation.org/packages/fpc/versions/2.1-11/topics/clusterboot" target="_blank"><code>clusterboot</code></a> [in package fpc] by Christian Hennig.</p>
+The plot shows that some clusters are unstable or not very well-separated from other clusters. To probe further, I employ several resampling schemes(bootstrap, subsetting, jittering, replacement of points by noise) to assess the stability of these clusters. These methods are implemented in <a href="https://www.rdocumentation.org/packages/fpc/versions/2.1-11/topics/clusterboot" target="_blank"><code>clusterboot</code></a> [in package fpc] by Christian Hennig.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R"><span style="color:#f92672">*</span> Cluster stability assessment <span style="color:#f92672">*</span>
 Cluster method<span style="color:#f92672">:</span>  clara<span style="color:#f92672">/</span>pam 
 Full clustering results are given as parameter result
