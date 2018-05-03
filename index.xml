@@ -79,9 +79,8 @@ where $\hat w_{i,j}$ are the factorized interaction parameters between pairs</de
       <pubDate>Sun, 15 Jan 2017 23:28:25 -0500</pubDate>
       
       <guid>http://uhoang.github.io/blog/create-a-hugo-site-with-github/</guid>
-      <description>Step 1: Install Hugo For Linux users, you can install hugo through snap or apt-get command in the terminal. See install for further details or if you are running other OS.
-snap install hugo or
-sudo apt-get install hugo Step 2: Create a new site In your terminal, run the following command, where site_name will be your site directory. This means that all the markdown and templates and configuration will be store in that directory.</description>
+      <description>Recently, my coworker, a full-stack developer, recommended me to build a personal site with Hugo, an open-source static site generator and Github. Overall, the experience with setting up a site is quite pleasant. There are some hoops to jump through such as a proper way to deploy generated contents on Github and finding the math typesetting library that works well on major browsers.
+In this post, I will share five simple steps to create a static site in no time.</description>
     </item>
     
   </channel>
