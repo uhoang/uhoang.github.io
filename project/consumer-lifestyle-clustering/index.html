@@ -266,50 +266,54 @@ A pruned sample of the inputs is displayed in the below table. For illustrative 
 </figure>
 
 The plot shows that clusters found by PAM are not very well-separated. K-means seems to segregate observations better. To probe further, I employ two resampling schemes &ndash; bootstrap, subsetting &ndash; to assess the stability of these clusters. These methods are implemented in <a href="https://www.rdocumentation.org/packages/fpc/versions/2.1-11/topics/clusterboot" target="_blank"><code>clusterboot</code></a> [in package fpc] by Christian Hennig.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R"><span style="color:#f92672">*</span> Cluster stability assessment <span style="color:#f92672">*</span>
-Cluster method<span style="color:#f92672">:</span>  clara<span style="color:#f92672">/</span>pam 
+
+<pre><code>* Cluster stability assessment *
+Cluster method:  clara/pam 
 Full clustering results are given as parameter result
 of the clusterboot object, which also provides further statistics
 of the resampling results.
-Number of resampling runs<span style="color:#f92672">:</span>  <span style="color:#ae81ff">100</span> 
+Number of resampling runs:  100 
 
-Number of clusters found <span style="color:#66d9ef">in</span> data<span style="color:#f92672">:</span>  <span style="color:#ae81ff">5</span> 
+Number of clusters found in data:  5 
 
- Clusterwise Jaccard bootstrap (omitting multiple points) <span style="color:#66d9ef">mean</span><span style="color:#f92672">:</span>
-[<span style="color:#ae81ff">1</span>] <span style="color:#ae81ff">0.5212346</span> <span style="color:#ae81ff">0.4841230</span> <span style="color:#ae81ff">0.7535759</span> <span style="color:#ae81ff">0.6628636</span> <span style="color:#ae81ff">0.6756281</span>
-dissolved<span style="color:#f92672">:</span>
-[<span style="color:#ae81ff">1</span>] <span style="color:#ae81ff">53</span> <span style="color:#ae81ff">65</span>  <span style="color:#ae81ff">4</span> <span style="color:#ae81ff">27</span> <span style="color:#ae81ff">23</span>
-recovered<span style="color:#f92672">:</span>
-[<span style="color:#ae81ff">1</span>] <span style="color:#ae81ff">21</span> <span style="color:#ae81ff">25</span> <span style="color:#ae81ff">55</span> <span style="color:#ae81ff">42</span> <span style="color:#ae81ff">38</span>
- Clusterwise Jaccard subsetting <span style="color:#66d9ef">mean</span><span style="color:#f92672">:</span>
-[<span style="color:#ae81ff">1</span>] <span style="color:#ae81ff">0.4776582</span> <span style="color:#ae81ff">0.4270802</span> <span style="color:#ae81ff">0.7189634</span> <span style="color:#ae81ff">0.5886231</span> <span style="color:#ae81ff">0.6485604</span>
-dissolved<span style="color:#f92672">:</span>
-[<span style="color:#ae81ff">1</span>] <span style="color:#ae81ff">57</span> <span style="color:#ae81ff">74</span>  <span style="color:#ae81ff">6</span> <span style="color:#ae81ff">41</span> <span style="color:#ae81ff">23</span>
-recovered<span style="color:#f92672">:</span>
-[<span style="color:#ae81ff">1</span>] <span style="color:#ae81ff">13</span> <span style="color:#ae81ff">15</span> <span style="color:#ae81ff">40</span> <span style="color:#ae81ff">25</span> <span style="color:#ae81ff">31</span>
+ Clusterwise Jaccard bootstrap (omitting multiple points) mean:
+[1] 0.5212346 0.4841230 0.7535759 0.6628636 0.6756281
+dissolved:
+[1] 53 65  4 27 23
+recovered:
+[1] 21 25 55 42 38
+ Clusterwise Jaccard subsetting mean:
+[1] 0.4776582 0.4270802 0.7189634 0.5886231 0.6485604
+dissolved:
+[1] 57 74  6 41 23
+recovered:
+[1] 13 15 40 25 31
 
 
-<span style="color:#f92672">*</span> Cluster stability assessment <span style="color:#f92672">*</span>
-Cluster method<span style="color:#f92672">:</span>  kmeans 
+* Cluster stability assessment *
+Cluster method:  kmeans 
 Full clustering results are given as parameter result
 of the clusterboot object, which also provides further statistics
 of the resampling results.
-Number of resampling runs<span style="color:#f92672">:</span>  <span style="color:#ae81ff">100</span> 
+Number of resampling runs:  100 
 
-Number of clusters found <span style="color:#66d9ef">in</span> data<span style="color:#f92672">:</span>  <span style="color:#ae81ff">2</span> 
+Number of clusters found in data:  2 
 
- Clusterwise Jaccard bootstrap (omitting multiple points) <span style="color:#66d9ef">mean</span><span style="color:#f92672">:</span>
-[<span style="color:#ae81ff">1</span>] <span style="color:#ae81ff">0.9707125</span> <span style="color:#ae81ff">0.9755757</span>
-dissolved<span style="color:#f92672">:</span>
-[<span style="color:#ae81ff">1</span>] <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">1</span>
-recovered<span style="color:#f92672">:</span>
-[<span style="color:#ae81ff">1</span>] <span style="color:#ae81ff">99</span> <span style="color:#ae81ff">99</span>
- Clusterwise Jaccard subsetting <span style="color:#66d9ef">mean</span><span style="color:#f92672">:</span>
-[<span style="color:#ae81ff">1</span>] <span style="color:#ae81ff">0.9582220</span> <span style="color:#ae81ff">0.9645584</span>
-dissolved<span style="color:#f92672">:</span>
-[<span style="color:#ae81ff">1</span>] <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">1</span>
-recovered<span style="color:#f92672">:</span>
-[<span style="color:#ae81ff">1</span>] <span style="color:#ae81ff">99</span> <span style="color:#ae81ff">99</span></code></pre></div>
+ Clusterwise Jaccard bootstrap (omitting multiple points) mean:
+[1] 0.9707125 0.9755757
+dissolved:
+[1] 1 1
+recovered:
+[1] 99 99
+ Clusterwise Jaccard subsetting mean:
+[1] 0.9582220 0.9645584
+dissolved:
+[1] 1 1
+recovered:
+[1] 99 99
+
+</code></pre>
+
 <p>The assessment confirms the patterns in the t-SNE plots. The mean value of Jaccard coefficient over the bootstrap and subseting schemes suggests that two clusters found by PAM are considered unstable and can be dissolved into others. There are low certainty how observations in PAM should be grouped together. On the other hand, k-means performs better in separating observations, and capturing highly stable clusters.<br/></p>
 
 <ul>
