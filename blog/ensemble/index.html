@@ -21,8 +21,7 @@ In learning, the main cause of error are due to noise, bias and variance. The go
   
   
   <link rel='icon' href='/favicon.ico'>
-<link rel='stylesheet' href='/assets/css/main.f0e8df71.css'>
-<link rel='stylesheet' href='/css/jupyter.css'>
+<link rel='stylesheet' href='/assets/css/main.f0e8df71.css'><link rel='stylesheet' href='/css/jupyter.css'>
 </head>
 
 
@@ -224,6 +223,12 @@ $$\gamma_m = argmin_\gamma \sum_{i = 1}^n L(y_i, F_{m-1}(x_i) + \gamma h_m(x_i))
 
 <li><p>Output $F_M(x)$</p></li>
 </ol>
+
+<!-- {{ if .Params.notebook }}
+    <link href="{{ $.Site.BaseURL }}css/jupyter.css" rel="stylesheet" type="text/css">
+{{ end }} -->
+
+<!-- {{partial "gbm_example.html" . }} -->
 
 <h6 id="a-toy-example">A toy example:</h6>
 

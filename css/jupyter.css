@@ -105,3 +105,7 @@
     .highlight .vi { color: #19177C } /* Name.Variable.Instance */
     .highlight .il { color: #666666 } /* Literal.Number.Integer.Long */
         </style>
+
+.input_area{
+  background-color: #eef;
+}
